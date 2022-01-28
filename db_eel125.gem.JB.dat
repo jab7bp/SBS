@@ -1,0 +1,1996 @@
+# Date/Time = Tuesday Jan 18, 11:00:00 2022
+# Databas for GEM layers in GEn-RP stacks in EEL/125. 6 UVA-XY layers are in the inline stack. 2 UVA-XY layers are in the right polarimeter stack.
+# Edited by JB to include up to modules m31. Added fake pedestal values as well. We don't have pedestal values yet.  
+
+# start database from the beginning of time 
+-------[ 2022-01-01 00:00:00 ] 
+# database format: the tracker consists of a collection of modules: 
+# database properties will be organized by module, not by "plane" as in old SBS-offline
+
+# Geometry and calibration/decode information:
+
+#For the purpose of cosmic testing in EEL/125, we have put all the 3 production frames one after the other in the order: Right Polarimeter (with 2 UVA-XY GEM layers) -> Inline Frame (with 2 INFN-XY layers plus 6 UVA-XY layers) -> Left Polarimeter (with 2 UVA-XY GEM layers). The two INFN layers in the inline frame and the two UVA layers in the left polarimeter are not installed as of Jan, 2022.
+
+# SBS GEMs as in the EEL/125 cosmic setup, for cosmic data taken from Oct/2021 through Dec/2021 : Layer 0 = 4X UVA X/Y, Layer 1 = 4X UVA X/Y, Layer 2 = 4X UVA X/Y, Layer 3 = 4X UVA X/Y, Layer 4 = 4X UVA X/Y, Layer 5 = 4X UVA X/Y, Layer 6 = 4X UVA X/Y, Layer 7 = 4X UVA X/Y.
+
+# Right Polarimeter: Layer 0, Layer 1
+# Inline : Layer 2, Layer 3, Layer 4, Layer 5, Layer 6, Layer 7
+
+sbs.gem.modules = m0 m1 m2 m3   m4 m5 m6 m7  m8 m9 m10 m11 m12 m13 m14 m15   m16 m17 m18 m19   m20 m21 m22 m23   m24 m25 m26 m27   m28 m29 m30 m31       
+
+sbs.gem.m0.layer = 0
+sbs.gem.m1.layer = 0
+sbs.gem.m2.layer = 0
+sbs.gem.m3.layer = 0
+
+sbs.gem.m4.layer = 1
+sbs.gem.m5.layer = 1
+sbs.gem.m6.layer = 1
+sbs.gem.m7.layer = 1
+
+sbs.gem.m8.layer  = 2
+sbs.gem.m9.layer  = 2
+sbs.gem.m10.layer = 2
+sbs.gem.m11.layer = 2
+
+sbs.gem.m12.layer = 3
+sbs.gem.m13.layer = 3
+sbs.gem.m14.layer = 3
+sbs.gem.m15.layer = 3
+
+sbs.gem.m16.layer = 4
+sbs.gem.m17.layer = 4
+sbs.gem.m18.layer = 4
+sbs.gem.m19.layer = 4
+
+sbs.gem.m20.layer = 5
+sbs.gem.m21.layer = 5
+sbs.gem.m22.layer = 5
+sbs.gem.m23.layer = 5
+
+sbs.gem.m24.layer = 6
+sbs.gem.m25.layer = 6
+sbs.gem.m26.layer = 6
+sbs.gem.m27.layer = 6
+
+sbs.gem.m28.layer = 7
+sbs.gem.m29.layer = 7
+sbs.gem.m30.layer = 7
+sbs.gem.m31.layer = 7
+
+
+
+
+# APV mapping configurations: 0 = INFN, 1 = UVA X/Y, 2 = UVA U/V
+
+
+sbs.gem.m0.apvmap = 1
+sbs.gem.m1.apvmap = 1
+sbs.gem.m2.apvmap = 1
+sbs.gem.m3.apvmap = 1
+
+sbs.gem.m4.apvmap = 1
+sbs.gem.m5.apvmap = 1
+sbs.gem.m6.apvmap = 1
+sbs.gem.m7.apvmap = 1
+
+sbs.gem.m8.apvmap  = 1
+sbs.gem.m9.apvmap  = 1
+sbs.gem.m10.apvmap = 1
+sbs.gem.m11.apvmap = 1
+
+sbs.gem.m12.apvmap = 1
+sbs.gem.m13.apvmap = 1
+sbs.gem.m14.apvmap = 1
+sbs.gem.m15.apvmap = 1
+
+sbs.gem.m16.apvmap = 1
+sbs.gem.m17.apvmap = 1
+sbs.gem.m18.apvmap = 1
+sbs.gem.m19.apvmap = 1
+
+sbs.gem.m20.apvmap = 1
+sbs.gem.m21.apvmap = 1
+sbs.gem.m22.apvmap = 1
+sbs.gem.m23.apvmap = 1
+
+sbs.gem.m24.apvmap = 1
+sbs.gem.m25.apvmap = 1
+sbs.gem.m26.apvmap = 1
+sbs.gem.m27.apvmap = 1
+
+sbs.gem.m28.apvmap = 1
+sbs.gem.m29.apvmap = 1
+sbs.gem.m30.apvmap = 1
+sbs.gem.m31.apvmap = 1
+
+
+# basic flags controlling decoding:
+sbs.gem.pedestalmode = 0
+sbs.gem.commonmode_flag = 1 # "Danning method" cm subtraction
+sbs.gem.chan_cm_flags = 640 # defines the "dummy" reference channel for storing the cm_enable and build_all_samples flags -(40 x 16) "sbsvtp2" and "sbsvtp4"currently has 36 and 20 MPDs respectively right now. 
+sbs.gem.commonmode_nstriplo = 20 # for sorting method
+sbs.gem.commonmode_nstriphi = 20 # for sorting method
+sbs.gem.commonmode_niter = 3
+sbs.gem.commonmode_minstrips = 20
+sbs.gem.plot_common_mode = 1
+sbs.gem.pedsub_online = 1 # normally this should always be set to 1
+sbs.gem.dump_geometry_info = 1
+sbs.gem.efficiency_bin_width_1D = 0.02
+sbs.gem.efficiency_bin_width_2D = 0.02
+sbs.gem.commonmode_range_nsigma = 5.0
+
+sbs.gem.m1.commonmode_range_nsigma = 10.0
+sbs.gem.m2.commonmode_range_nsigma = 10.0
+sbs.gem.m3.commonmode_range_nsigma = 10.0
+
+# these may need adjusting:
+sbs.gem.usestriptimingcut = 0
+sbs.gem.useTSchi2cut = 0
+sbs.gem.maxstrip_t0 = 85.4
+sbs.gem.maxstrip_tcut = 21.0
+sbs.gem.addstrip_tcut = 21.0
+sbs.gem.addstrip_ccor_cut = 0.4
+sbs.gem.suppressfirstlast = 0
+
+sbs.gem.plot_event_info = 1
+
+# to start with, let's not worry about the misalignments, let's put everything at its nominal/ideal position:
+
+# initial guesses:
+# in the INFN X/Y layers, the "GEMPOS" index that defines the global module number runs from bottom to top
+# in the UVA X/Y layer, the "GEMPOS" index that defines the global module number runs from top to bottom
+
+# Z coordinate offset between 2 consecutive GEM modules within a UVA-XY GEM layer is found to be 0.032 meters -> Anu on Dec 2nd 2021 after referring engineering drawings.
+# Andrew has taken this value to be 0.036 meters in hist initial guess values for BB.
+
+////Right polarimeter////
+
+//First railing - UVA Double - Z cooridinates of the railing = 0 m
+//Type A layer
+sbs.gem.m0.position = -0.768 0 0     //"Front most" in this cosmic setup
+sbs.gem.m1.position = -0.256 0 0.032 
+sbs.gem.m2.position =  0.256 0 0     //"Front most" in this cosmic setup
+sbs.gem.m3.position =  0.768 0 0.032
+//Type B layer
+sbs.gem.m4.position = -0.768 0 0.045
+sbs.gem.m5.position = -0.256 0 0.077
+sbs.gem.m6.position =  0.256 0 0.045
+sbs.gem.m7.position =  0.768 0 0.077
+
+////
+
+
+////Inline Frame////
+
+//Inline frame is 3.0 cm below the right plarimeter frame. So need to add 0.030 m to all the X values of inline GEMs.
+
+
+//Second railing - UVA double - Z coordinate of the railing = d + 0.267 m (from the drawing)
+//Type B layer
+sbs.gem.m8.position = -0.738 0 0.883
+sbs.gem.m9.position = -0.226 0 0.851
+sbs.gem.m10.position =  0.286 0 0.883
+sbs.gem.m11.position =  0.798 0 0.851
+//Type A layer
+sbs.gem.m12.position = -0.738 0 0.927
+sbs.gem.m13.position = -0.226 0 0.895
+sbs.gem.m14.position =  0.286 0 0.927
+sbs.gem.m15.position =  0.798 0 0.895
+
+
+//Third railing - UVA double - Z coordinate of the railing = d + 0.593 m (from the drawing)
+//Type B layer
+sbs.gem.m16.position = -0.738 0 1.209
+sbs.gem.m17.position = -0.226 0 1.177
+sbs.gem.m18.position =  0.286 0 1.209
+sbs.gem.m19.position =  0.798 0 1.177
+//Type A layer
+sbs.gem.m20.position = -0.738 0 1.253
+sbs.gem.m21.position = -0.226 0 1.221
+sbs.gem.m22.position =  0.286 0 1.253
+sbs.gem.m23.position =  0.798 0 1.221
+
+
+//Fourth railing - UVA single - Z coordinate of the railing = d + 0.721 m (from the drawing)
+//Type A layer
+sbs.gem.m24.position = -0.738 0 1.381
+sbs.gem.m25.position = -0.226 0 1.349
+sbs.gem.m26.position =  0.286 0 1.381
+sbs.gem.m27.position =  0.798 0 1.349
+
+//Fifth raling - UVA single - Z coordinate of the raling = d + 0.848 m (from the drawing)
+//Type A layer
+sbs.gem.m28.position = -0.738 0 1.509
+sbs.gem.m29.position = -0.226 0 1.477
+sbs.gem.m30.position =  0.286 0 1.509
+sbs.gem.m31.position =  0.798 0 1.477
+
+////
+
+
+sbs.gem.m0.angle = 0 0 0
+sbs.gem.m1.angle = 0 0 0
+sbs.gem.m2.angle = 0 0 0
+sbs.gem.m3.angle = 0 0 0
+
+sbs.gem.m4.angle = 0 0 0
+sbs.gem.m5.angle = 0 0 0
+sbs.gem.m6.angle = 0 0 0
+sbs.gem.m7.angle = 0 0 0
+
+sbs.gem.m8.angle = 0 0 0
+sbs.gem.m9.angle = 0 0 0
+sbs.gem.m10.angle = 0 0 0
+sbs.gem.m11.angle = 0 0 0
+
+sbs.gem.m12.angle = 0 0 0
+sbs.gem.m13.angle = 0 0 0
+sbs.gem.m14.angle = 0 0 0
+sbs.gem.m15.angle = 0 0 0
+
+sbs.gem.m16.angle = 0 0 0
+sbs.gem.m17.angle = 0 0 0
+sbs.gem.m18.angle = 0 0 0
+sbs.gem.m19.angle = 0 0 0
+
+sbs.gem.m20.angle = 0 0 0
+sbs.gem.m21.angle = 0 0 0
+sbs.gem.m22.angle = 0 0 0
+sbs.gem.m23.angle = 0 0 0
+
+sbs.gem.m24.angle = 0 0 0
+sbs.gem.m25.angle = 0 0 0
+sbs.gem.m26.angle = 0 0 0
+sbs.gem.m27.angle = 0 0 0
+
+sbs.gem.m28.angle = 0 0 0
+sbs.gem.m29.angle = 0 0 0
+sbs.gem.m30.angle = 0 0 0
+sbs.gem.m31.angle = 0 0 0
+
+
+# Module sizes: INFN XY = (0.512 0.4096 0.001) , UVA XY = (0.512 0.6144 0.001)
+
+
+sbs.gem.m0.size = 0.512 0.6144 0.001
+sbs.gem.m1.size = 0.512 0.6144 0.001
+sbs.gem.m2.size = 0.512 0.6144 0.001
+sbs.gem.m3.size = 0.512 0.6144 0.001
+
+sbs.gem.m4.size = 0.512 0.6144 0.001
+sbs.gem.m5.size = 0.512 0.6144 0.001
+sbs.gem.m6.size = 0.512 0.6144 0.001
+sbs.gem.m7.size = 0.512 0.6144 0.001
+
+sbs.gem.m8.size  = 0.512 0.6144 0.001
+sbs.gem.m9.size  = 0.512 0.6144 0.001
+sbs.gem.m10.size = 0.512 0.6144 0.001
+sbs.gem.m11.size = 0.512 0.6144 0.001
+
+sbs.gem.m12.size = 0.512 0.6144 0.001
+sbs.gem.m13.size = 0.512 0.6144 0.001
+sbs.gem.m14.size = 0.512 0.6144 0.001
+sbs.gem.m15.size = 0.512 0.6144 0.001
+
+sbs.gem.m16.size = 0.512 0.6144 0.001
+sbs.gem.m17.size = 0.512 0.6144 0.001
+sbs.gem.m18.size = 0.512 0.6144 0.001
+sbs.gem.m19.size = 0.512 0.6144 0.001
+
+sbs.gem.m20.size = 0.512 0.6144 0.001
+sbs.gem.m21.size = 0.512 0.6144 0.001
+sbs.gem.m22.size = 0.512 0.6144 0.001
+sbs.gem.m23.size = 0.512 0.6144 0.001
+
+sbs.gem.m24.size = 0.512 0.6144 0.001
+sbs.gem.m25.size = 0.512 0.6144 0.001
+sbs.gem.m26.size = 0.512 0.6144 0.001
+sbs.gem.m27.size = 0.512 0.6144 0.001
+
+sbs.gem.m28.size = 0.512 0.6144 0.001
+sbs.gem.m29.size = 0.512 0.6144 0.001
+sbs.gem.m30.size = 0.512 0.6144 0.001
+sbs.gem.m31.size = 0.512 0.6144 0.001
+
+
+
+### strip angles (as measured wrt +X direction of transport coordinate system):
+
+# For the UVA X/Y modules the "X" axis coincides with the direction of transport coordinates "X" axis. For GEM layers that are oriented so that the beam is hitting the R/O board first, "Y" axis is rotaed by -90 degrees w.r.t transport coordinates "X" axis and for the GEM layers that are oriented so that the beam is hitting the gas window first, "Y" axis is rotaded by +90 degrees w.r.t transport coordinates "X" axis (GEM layer "Y" axis and transport coordinate "Y" axis coincides with each other).
+
+# Layer 0 - beam hits gas window first
+sbs.gem.m0.uangle = 0.0 
+sbs.gem.m0.vangle = 90.0
+sbs.gem.m1.uangle = 0.0
+sbs.gem.m1.vangle = 90.0
+sbs.gem.m2.uangle = 0.0
+sbs.gem.m2.vangle = 90.0
+sbs.gem.m3.uangle = 0.0
+sbs.gem.m3.vangle = 90.0
+
+# Layer 1 - beam hits r/o board first
+sbs.gem.m4.uangle = 0.0
+sbs.gem.m4.vangle = -90.0
+sbs.gem.m5.uangle = 0.0
+sbs.gem.m5.vangle = -90.0
+sbs.gem.m6.uangle = 0.0
+sbs.gem.m6.vangle = -90.0
+sbs.gem.m7.uangle = 0.0
+sbs.gem.m7.vangle = -90.0
+
+# Layer 2 - beam hits gas window first
+sbs.gem.m8.uangle  = 0.0
+sbs.gem.m8.vangle  = 90.0
+sbs.gem.m9.uangle  = 0.0
+sbs.gem.m9.vangle  = 90.0
+sbs.gem.m10.uangle = 0.0
+sbs.gem.m10.vangle = 90.0
+sbs.gem.m11.uangle = 0.0
+sbs.gem.m11.vangle = 90.0
+
+# Layer 3 - beam hits r/o board first
+sbs.gem.m12.uangle = 0.0
+sbs.gem.m12.vangle = -90.0
+sbs.gem.m13.uangle = 0.0
+sbs.gem.m13.vangle = -90.0
+sbs.gem.m14.uangle = 0.0
+sbs.gem.m14.vangle = -90.0
+sbs.gem.m15.uangle = 0.0
+sbs.gem.m15.vangle = -90.0
+
+# Layer 4 - beam hits gas windo first
+sbs.gem.m16.uangle = 0.0
+sbs.gem.m16.vangle = 90.0
+sbs.gem.m17.uangle = 0.0
+sbs.gem.m17.vangle = 90.0
+sbs.gem.m18.uangle = 0.0
+sbs.gem.m18.vangle = 90.0
+sbs.gem.m19.uangle = 0.0
+sbs.gem.m19.vangle = 90.0
+
+# Layer 5 - beam hits r/o board first
+sbs.gem.m20.uangle = 0.0
+sbs.gem.m20.vangle = -90.0
+sbs.gem.m21.uangle = 0.0
+sbs.gem.m21.vangle = -90.0
+sbs.gem.m22.uangle = 0.0
+sbs.gem.m22.vangle = -90.0
+sbs.gem.m23.uangle = 0.0
+sbs.gem.m23.vangle = -90.0
+
+# Layer 6 - beam hits r/o board first
+sbs.gem.m24.uangle = 0.0
+sbs.gem.m24.vangle = -90.0
+sbs.gem.m25.uangle = 0.0
+sbs.gem.m25.vangle = -90.0
+sbs.gem.m26.uangle = 0.0
+sbs.gem.m26.vangle = -90.0
+sbs.gem.m27.uangle = 0.0
+sbs.gem.m27.vangle = -90.0
+
+# Layer 7 - beam hits r/o board first
+sbs.gem.m28.uangle = 0.0
+sbs.gem.m28.vangle = -90.0
+sbs.gem.m29.uangle = 0.0
+sbs.gem.m29.vangle = -90.0
+sbs.gem.m30.uangle = 0.0
+sbs.gem.m30.vangle = -90.0
+sbs.gem.m31.uangle = 0.0
+sbs.gem.m31.vangle = -90.0
+
+
+# U/V strip offsets: for X/Y GEMS, INFN and UVA alike, we are probably safe to stick with (0,0).
+# for U/V strip GEMs, the needed offsets are non-zero:
+
+# U offsets:
+
+sbs.gem.m0.uoffset = 0.0
+sbs.gem.m1.uoffset = 0.0
+sbs.gem.m2.uoffset = 0.0
+sbs.gem.m3.uoffset = 0.0
+
+sbs.gem.m4.uoffset = 0.0
+sbs.gem.m5.uoffset = 0.0
+sbs.gem.m6.uoffset = 0.0
+sbs.gem.m7.uoffset = 0.0
+
+sbs.gem.m8.uoffset  = 0.0
+sbs.gem.m9.uoffset  = 0.0
+sbs.gem.m10.uoffset = 0.0
+sbs.gem.m11.uoffset = 0.0
+
+sbs.gem.m12.uoffset = 0.0
+sbs.gem.m13.uoffset = 0.0
+sbs.gem.m14.uoffset = 0.0
+sbs.gem.m15.uoffset = 0.0
+
+sbs.gem.m16.uoffset = 0.0
+sbs.gem.m17.uoffset = 0.0
+sbs.gem.m18.uoffset = 0.0
+sbs.gem.m19.uoffset = 0.0
+
+sbs.gem.m20.uoffset = 0.0
+sbs.gem.m21.uoffset = 0.0
+sbs.gem.m22.uoffset = 0.0
+sbs.gem.m23.uoffset = 0.0
+
+sbs.gem.m24.uoffset = 0.0
+sbs.gem.m25.uoffset = 0.0
+sbs.gem.m26.uoffset = 0.0
+sbs.gem.m27.uoffset = 0.0
+
+sbs.gem.m28.uoffset = 0.0
+sbs.gem.m29.uoffset = 0.0
+sbs.gem.m30.uoffset = 0.0
+sbs.gem.m31.uoffset = 0.0
+
+
+# V offsets:
+
+sbs.gem.m0.voffset = 0.0
+sbs.gem.m1.voffset = 0.0
+sbs.gem.m2.voffset = 0.0
+sbs.gem.m3.voffset = 0.0
+
+sbs.gem.m4.voffset = 0.0
+sbs.gem.m5.voffset = 0.0
+sbs.gem.m6.voffset = 0.0
+sbs.gem.m7.voffset = 0.0
+
+sbs.gem.m8.voffset = 0.0
+sbs.gem.m9.voffset = 0.0
+sbs.gem.m10.voffset = 0.0
+sbs.gem.m11.voffset = 0.0
+
+sbs.gem.m12.voffset = 0.0
+sbs.gem.m13.voffset = 0.0
+sbs.gem.m14.voffset = 0.0
+sbs.gem.m15.voffset = 0.0
+
+sbs.gem.m16.voffset = 0.0
+sbs.gem.m17.voffset = 0.0
+sbs.gem.m18.voffset = 0.0
+sbs.gem.m19.voffset = 0.0
+
+sbs.gem.m20.voffset = 0.0
+sbs.gem.m21.voffset = 0.0
+sbs.gem.m22.voffset = 0.0
+sbs.gem.m23.voffset = 0.0
+
+sbs.gem.m24.voffset = 0.0
+sbs.gem.m25.voffset = 0.0
+sbs.gem.m26.voffset = 0.0
+sbs.gem.m27.voffset = 0.0
+
+sbs.gem.m28.voffset = 0.0
+sbs.gem.m29.voffset = 0.0
+sbs.gem.m30.voffset = 0.0
+sbs.gem.m31.voffset = 0.0
+
+
+# strip counts: these are easy for the X/Y modules but less trivial for the U/V modules:
+
+# to start with, we set the U/V layer strip count equal to 128 times the total number of APV cards.
+# however, not all physical readout strips are connected to APV cards and not all APV cards have
+# all channels connected to physical readout strips, so we probably will need an additional
+# optional database parameter to specify the "strip offset" from the physical center of the GEM active area:
+# for now, we keep nstripsu,v = 3,840 for the U/V strip GEMs, changing this parameter would change the definition of uoffset and voffset
+
+
+sbs.gem.m0.nstripsu = 1280
+sbs.gem.m0.nstripsv = 1536
+sbs.gem.m1.nstripsu = 1280
+sbs.gem.m1.nstripsv = 1536
+sbs.gem.m2.nstripsu = 1280
+sbs.gem.m2.nstripsv = 1536
+sbs.gem.m3.nstripsu = 1280
+sbs.gem.m3.nstripsv = 1536
+
+sbs.gem.m4.nstripsu = 1280
+sbs.gem.m4.nstripsv = 1536
+sbs.gem.m5.nstripsu = 1280
+sbs.gem.m5.nstripsv = 1536
+sbs.gem.m6.nstripsu = 1280
+sbs.gem.m6.nstripsv = 1536
+sbs.gem.m7.nstripsu = 1280
+sbs.gem.m7.nstripsv = 1536
+
+sbs.gem.m8.nstripsu  = 1280
+sbs.gem.m8.nstripsv  = 1536
+sbs.gem.m9.nstripsu  = 1280
+sbs.gem.m9.nstripsv  = 1536
+sbs.gem.m10.nstripsu = 1280
+sbs.gem.m10.nstripsv = 1536
+sbs.gem.m11.nstripsu = 1280
+sbs.gem.m11.nstripsv = 1536
+
+sbs.gem.m12.nstripsu = 1280
+sbs.gem.m12.nstripsv = 1536
+sbs.gem.m13.nstripsu = 1280
+sbs.gem.m13.nstripsv = 1536
+sbs.gem.m14.nstripsu = 1280
+sbs.gem.m14.nstripsv = 1536
+sbs.gem.m15.nstripsu = 1280
+sbs.gem.m15.nstripsv = 1536
+
+sbs.gem.m16.nstripsu = 1280
+sbs.gem.m16.nstripsv = 1536
+sbs.gem.m17.nstripsu = 1280
+sbs.gem.m17.nstripsv = 1536
+sbs.gem.m18.nstripsu = 1280
+sbs.gem.m18.nstripsv = 1536
+sbs.gem.m19.nstripsu = 1280
+sbs.gem.m19.nstripsv = 1536
+
+sbs.gem.m20.nstripsu = 1280
+sbs.gem.m20.nstripsv = 1536
+sbs.gem.m21.nstripsu = 1280
+sbs.gem.m21.nstripsv = 1536
+sbs.gem.m22.nstripsu = 1280
+sbs.gem.m22.nstripsv = 1536
+sbs.gem.m23.nstripsu = 1280
+sbs.gem.m23.nstripsv = 1536
+
+sbs.gem.m24.nstripsu = 1280
+sbs.gem.m24.nstripsv = 1536
+sbs.gem.m25.nstripsu = 1280
+sbs.gem.m25.nstripsv = 1536
+sbs.gem.m26.nstripsu = 1280
+sbs.gem.m26.nstripsv = 1536
+sbs.gem.m27.nstripsu = 1280
+sbs.gem.m27.nstripsv = 1536
+
+sbs.gem.m28.nstripsu = 1280
+sbs.gem.m28.nstripsv = 1536
+sbs.gem.m29.nstripsu = 1280
+sbs.gem.m29.nstripsv = 1536
+sbs.gem.m30.nstripsu = 1280
+sbs.gem.m30.nstripsv = 1536
+sbs.gem.m31.nstripsu = 1280
+sbs.gem.m31.nstripsv = 1536
+sbs.gem.m32.nstripsu = 1280
+
+
+
+# all modules have the same strip pitch along both dimensions, 0.4 mm:
+sbs.gem.upitch = 0.0004
+sbs.gem.vpitch = 0.0004
+
+# tracking parameters:
+sbs.gem.threshold_sample = 50.0       # minimum for the largest ADC for strip to be considered a local maximum
+sbs.gem.threshold_stripsum = 250.0    # minimum for the ADC sum over six time samples for a strip
+sbs.gem.threshold_clustersum = 500.0  # minimum for the sum of all ADCs in a cluster
+
+sbs.gem.ADCasym_cut = 0.5
+sbs.gem.deltat_cut = 30.0
+sbs.gem.corrcoeff_cut = 0.5
+sbs.gem.filterflag1D = 1
+sbs.gem.filterflag2D = 0
+
+sbs.gem.peakprominence_minsigma = 5.0
+sbs.gem.peakprominence_minfraction = 0.2
+
+sbs.gem.maxnu_charge = 4  # distance from the local maximum that the algorithm searches for the strips to to be added to the cluster
+sbs.gem.maxnv_charge = 4
+
+sbs.gem.maxnu_pos = 2     # distance from the local maximum that the algorithm uses for the position calculation
+sbs.gem.maxnv_pos = 2
+
+sbs.gem.sigmahitshape = 0.0004 
+sbs.gem.sigmahitpos = 0.00015 # 0.15 mm or 150 um 
+sbs.gem.trackchi2cut = 100.0  # Need to start with bigger values to align
+sbs.gem.onlinezerosuppression = 0
+sbs.gem.zerosuppress_nsigma = 5.0 # offline zero suppression
+sbs.gem.minhitsontrack = 3  # This COULD increased for better analysis since we have 8 layers??
+sbs.gem.maxhitcombos = 20000
+sbs.gem.maxhitcombos_inner = 20000
+sbs.gem.maxhitcombos_total = 1000000000
+sbs.gem.tryfasttrack = 1
+sbs.gem.gridbinwidthx = 0.01  # Need to start with bigger values to align
+sbs.gem.gridbinwidthy = 0.01
+sbs.gem.gridedgetolerancex = 0.003
+sbs.gem.gridedgetolerancey = 0.003
+sbs.gem.useconstraint = 0 # should be 0 for a cosmic ray setup
+
+sbs.gem.useopticsconstraint = 0  
+sbs.gem.xptar_min = -0.25
+sbs.gem.xptar_max = 0.25
+sbs.gem.yptar_min = -0.08
+sbs.gem.yptar_max = -0.08
+sbs.gem.ytar_min = -0.08
+sbs.gem.ytar_max = 0.08
+sbs.gem.pmin = 0.5
+sbs.gem.pmax = 4.5
+
+################### DECODE INFO ########################################################################
+## Channel maps for decoding explained                                                                ##
+## Each entry corresponds to one APV card                                                             ## 
+## Crate = ROC ID = 2 and 4  for SBS VTP                                                                ##
+## Slot = 11 for BigBite VTP                                                                          ##
+## fiber/mpd is fiber number for an MPD module, this is unique for each module within a VTP/SSP       ##
+## gemid is unique "production ID" of a GEM module, not currently used by analysis but useful         ##
+## for bookkeeping/tracking                                                                           ##
+## adc_ch is the unique adc channel of this APV card within its associated MPD                        ##
+## i2c is the "i2c address" of this APV card (not currently used by analysis)                         ##
+## pos maps APV cards to physical locations on the detector                                           ##
+## invert specifies whether strip index runs from "right-to-left" or "left-to-right" within an APV    ##
+## axis specifies which strip orientation/dimension of the readout strips connected to this APV       ##
+## ORDER of entries in the maps is:                                                                   ##
+## crate   slot   fiber/mpd  gemid  adc_ch   i2c   pos     invert   axis                              ##
+########################################################################################################
+
+sbs.m0.chanmap = 
+      4      11      13       9       0      15       0       1       1 
+      4      11      13       9       1      14       1       1       1 
+      4      11      13       9       2      13       2       1       1 
+      4      11      13       9       3      12       3       1       1 
+      4      11      13       9       4      11       4       1       1 
+      4      11      13       9       5      10       5       1       1 
+      4      11      13       9       6       9       6       1       1 
+      4      11      13       9       7       8       7       1       1 
+      4      11      13       9       8       7       8       1       1 
+      4      11      13       9       9       6       9       1       1 
+      4      11      13       9      10       5      10       1       1 
+      4      11      13       9      11       4      11       1       1 
+      4      11      17       9      10       4       9       1       0 
+      4      11      17       9      11       3       8       1       0 
+      4      11      17       9      12       2       7       1       0 
+      4      11      17       9      13       1       6       1       0 
+      4      11      17       9      14       0       5       1       0 
+      4      11      18       9       0       4       0       0       0 
+      4      11      18       9       1       3       1       0       0 
+      4      11      18       9       2       2       2       0       0 
+      4      11      18       9       3       1       3       0       0 
+      4      11      18       9       4       0       4       0       0 
+sbs.m1.chanmap = 
+      4      11      14      32       0      15       0       1       1 
+      4      11      14      32       1      14       1       1       1 
+      4      11      14      32       2      13       2       1       1 
+      4      11      14      32       3      12       3       1       1 
+      4      11      14      32       4      11       4       1       1 
+      4      11      14      32       5      10       5       1       1 
+      4      11      14      32       6       9       6       1       1 
+      4      11      14      32       7       8       7       1       1 
+      4      11      14      32       8       7       8       1       1 
+      4      11      14      32       9       6       9       1       1 
+      4      11      14      32      10       5      10       1       1 
+      4      11      14      32      11       4      11       1       1 
+      4      11      17      32       5      12       9       1       0 
+      4      11      17      32       6      11       8       1       0 
+      4      11      17      32       7      10       7       1       0 
+      4      11      17      32       8       9       6       1       0 
+      4      11      17      32       9       8       5       1       0 
+      4      11      18      32       5      12       0       0       0 
+      4      11      18      32       6      11       1       0       0 
+      4      11      18      32       7      10       2       0       0 
+      4      11      18      32       8       9       3       0       0 
+      4      11      18      32       9       8       4       0       0 
+sbs.m2.chanmap = 
+      4      11      15      30       0      15      11       0       1 
+      4      11      15      30       1      14      10       0       1 
+      4      11      15      30       2      13       9       0       1 
+      4      11      15      30       3      12       8       0       1 
+      4      11      15      30       4      11       7       0       1 
+      4      11      15      30       5      10       6       0       1 
+      4      11      15      30       6       9       5       0       1 
+      4      11      15      30       7       8       4       0       1 
+      4      11      15      30       8       7       3       0       1 
+      4      11      15      30       9       6       2       0       1 
+      4      11      15      30      10       5       1       0       1 
+      4      11      15      30      11       4       0       0       1 
+      4      11      17      30       0      20       9       1       0 
+      4      11      17      30       1      19       8       1       0 
+      4      11      17      30       2      18       7       1       0 
+      4      11      17      30       3      17       6       1       0 
+      4      11      17      30       4      16       5       1       0 
+      4      11      18      30      10      20       0       0       0 
+      4      11      18      30      11      19       1       0       0 
+      4      11      18      30      12      18       2       0       0 
+      4      11      18      30      13      17       3       0       0 
+      4      11      18      30      14      16       4       0       0 
+sbs.m3.chanmap = 
+      4      11      16      50       0      15      11       0       1 
+      4      11      16      50       1      14      10       0       1 
+      4      11      16      50       2      13       9       0       1 
+      4      11      16      50       3      12       8       0       1 
+      4      11      16      50       4      11       7       0       1 
+      4      11      16      50       5      10       6       0       1 
+      4      11      16      50       6       9       5       0       1 
+      4      11      16      50       7       8       4       0       1 
+      4      11      16      50       8       7       3       0       1 
+      4      11      16      50       9       6       2       0       1 
+      4      11      16      50      10       5       1       0       1 
+      4      11      16      50      11       4       0       0       1 
+      4      11      19      50       0       4       9       1       0 
+      4      11      19      50       1       3       8       1       0 
+      4      11      19      50       2       2       7       1       0 
+      4      11      19      50       3       1       6       1       0 
+      4      11      19      50       4       0       5       1       0 
+      4      11      19      50       8      12       0       0       0 
+      4      11      19      50       9      11       1       0       0 
+      4      11      19      50      10      10       2       0       0 
+      4      11      19      50      11       9       3       0       0 
+      4      11      19      50      12       8       4       0       0 
+sbs.m4.chanmap = 
+      4      11       6       4       0      15       0       1       1 
+      4      11       6       4       1      14       1       1       1 
+      4      11       6       4       2      13       2       1       1 
+      4      11       6       4       3      12       3       1       1 
+      4      11       6       4       4      11       4       1       1 
+      4      11       6       4       5      10       5       1       1 
+      4      11       6       4       6       9       6       1       1 
+      4      11       6       4       7       8       7       1       1 
+      4      11       6       4       8       7       8       1       1 
+      4      11       6       4       9       6       9       1       1 
+      4      11       6       4      10       5      10       1       1 
+      4      11       6       4      11       4      11       1       1 
+      4      11      10       4      10       4       9       1       0 
+      4      11      10       4      11       3       8       1       0 
+      4      11      10       4      12       2       7       1       0 
+      4      11      10       4      13       1       6       1       0 
+      4      11      10       4      14       0       5       1       0 
+      4      11      11       4       0       4       0       0       0 
+      4      11      11       4       1       3       1       0       0 
+      4      11      11       4       2       2       2       0       0 
+      4      11      11       4       3       1       3       0       0 
+      4      11      11       4       4       0       4       0       0 
+sbs.m5.chanmap = 
+      4      11       7      28       0      15       0       1       1 
+      4      11       7      28       1      14       1       1       1 
+      4      11       7      28       2      13       2       1       1 
+      4      11       7      28       3      12       3       1       1 
+      4      11       7      28       4      11       4       1       1 
+      4      11       7      28       5      10       5       1       1 
+      4      11       7      28       6       9       6       1       1 
+      4      11       7      28       7       8       7       1       1 
+      4      11       7      28       8       7       8       1       1 
+      4      11       7      28       9       6       9       1       1 
+      4      11       7      28      10       5      10       1       1 
+      4      11       7      28      11       4      11       1       1 
+      4      11      10      28       5      12       9       1       0 
+      4      11      10      28       6      11       8       1       0 
+      4      11      10      28       7      10       7       1       0 
+      4      11      10      28       8       9       6       1       0 
+      4      11      10      28       9       8       5       1       0 
+      4      11      11      28       5      12       0       0       0 
+      4      11      11      28       6      11       1       0       0 
+      4      11      11      28       7      10       2       0       0 
+      4      11      11      28       8       9       3       0       0 
+      4      11      11      28       9       8       4       0       0 
+sbs.m6.chanmap = 
+      4      11       8      31       0      15      11       0       1 
+      4      11       8      31       1      14      10       0       1 
+      4      11       8      31       2      13       9       0       1 
+      4      11       8      31       3      12       8       0       1 
+      4      11       8      31       4      11       7       0       1 
+      4      11       8      31       5      10       6       0       1 
+      4      11       8      31       6       9       5       0       1 
+      4      11       8      31       7       8       4       0       1 
+      4      11       8      31       8       7       3       0       1 
+      4      11       8      31       9       6       2       0       1 
+      4      11       8      31      10       5       1       0       1 
+      4      11       8      31      11       4       0       0       1 
+      4      11      10      31       0      20       9       1       0 
+      4      11      10      31       1      19       8       1       0 
+      4      11      10      31       2      18       7       1       0 
+      4      11      10      31       3      17       6       1       0 
+      4      11      10      31       4      16       5       1       0 
+      4      11      11      31      10      20       0       0       0 
+      4      11      11      31      11      19       1       0       0 
+      4      11      11      31      12      18       2       0       0 
+      4      11      11      31      13      17       3       0       0 
+      4      11      11      31      14      16       4       0       0 
+sbs.m7.chanmap = 
+      4      11       9      12       0      15      11       0       1 
+      4      11       9      12       1      14      10       0       1 
+      4      11       9      12       2      13       9       0       1 
+      4      11       9      12       3      12       8       0       1 
+      4      11       9      12       4      11       7       0       1 
+      4      11       9      12       5      10       6       0       1 
+      4      11       9      12       6       9       5       0       1 
+      4      11       9      12       7       8       4       0       1 
+      4      11       9      12       8       7       3       0       1 
+      4      11       9      12       9       6       2       0       1 
+      4      11       9      12      10       5       1       0       1 
+      4      11       9      12      11       4       0       0       1 
+      4      11      12      12       0       4       9       1       0 
+      4      11      12      12       1       3       8       1       0 
+      4      11      12      12       2       2       7       1       0 
+      4      11      12      12       3       1       6       1       0 
+      4      11      12      12       4       0       5       1       0 
+      4      11      12      12       8      12       0       0       0 
+      4      11      12      12       9      11       1       0       0 
+      4      11      12      12      10      10       2       0       0 
+      4      11      12      12      11       9       3       0       0 
+      4      11      12      12      12       8       4       0       0 
+sbs.m8.chanmap = 
+      2      11       0      18       0      15       0       1       1 
+      2      11       0      18       1      14       1       1       1 
+      2      11       0      18       2      13       2       1       1 
+      2      11       0      18       3      12       3       1       1 
+      2      11       0      18       4      11       4       1       1 
+      2      11       0      18       5      10       5       1       1 
+      2      11       0      18       6       9       6       1       1 
+      2      11       0      18       7       8       7       1       1 
+      2      11       0      18       8       7       8       1       1 
+      2      11       0      18       9       6       9       1       1 
+      2      11       0      18      10       5      10       1       1 
+      2      11       0      18      11       4      11       1       1 
+      2      11       4      18      10       4       9       1       0 
+      2      11       4      18      11       3       8       1       0 
+      2      11       4      18      12       2       7       1       0 
+      2      11       4      18      13       1       6       1       0 
+      2      11       4      18      14       0       5       1       0 
+      2      11       5      18       0       4       0       0       0 
+      2      11       5      18       1       3       1       0       0 
+      2      11       5      18       2       2       2       0       0 
+      2      11       5      18       3       1       3       0       0 
+      2      11       5      18       4       0       4       0       0 
+sbs.m9.chanmap = 
+      2      11       1      37       0      15       0       1       1 
+      2      11       1      37       1      14       1       1       1 
+      2      11       1      37       2      13       2       1       1 
+      2      11       1      37       3      12       3       1       1 
+      2      11       1      37       4      11       4       1       1 
+      2      11       1      37       5      10       5       1       1 
+      2      11       1      37       6       9       6       1       1 
+      2      11       1      37       7       8       7       1       1 
+      2      11       1      37       8       7       8       1       1 
+      2      11       1      37       9       6       9       1       1 
+      2      11       1      37      10       5      10       1       1 
+      2      11       1      37      11       4      11       1       1 
+      2      11       4      37       5      12       9       1       0 
+      2      11       4      37       6      11       8       1       0 
+      2      11       4      37       7      10       7       1       0 
+      2      11       4      37       8       9       6       1       0 
+      2      11       4      37       9       8       5       1       0 
+      2      11       5      37       5      12       0       0       0 
+      2      11       5      37       6      11       1       0       0 
+      2      11       5      37       7      10       2       0       0 
+      2      11       5      37       8       9       3       0       0 
+      2      11       5      37       9       8       4       0       0 
+sbs.m10.chanmap = 
+      2      11       2      25       0      15      11       0       1 
+      2      11       2      25       1      14      10       0       1 
+      2      11       2      25       2      13       9       0       1 
+      2      11       2      25       3      12       8       0       1 
+      2      11       2      25       4      11       7       0       1 
+      2      11       2      25       5      10       6       0       1 
+      2      11       2      25       6       9       5       0       1 
+      2      11       2      25       7       8       4       0       1 
+      2      11       2      25       8       7       3       0       1 
+      2      11       2      25       9       6       2       0       1 
+      2      11       2      25      10       5       1       0       1 
+      2      11       2      25      11       4       0       0       1 
+      2      11       4      25       0      20       9       1       0 
+      2      11       4      25       1      19       8       1       0 
+      2      11       4      25       2      18       7       1       0 
+      2      11       4      25       3      17       6       1       0 
+      2      11       4      25       4      16       5       1       0 
+      2      11       5      25      10      20       0       0       0 
+      2      11       5      25      11      19       1       0       0 
+      2      11       5      25      12      18       2       0       0 
+      2      11       5      25      13      17       3       0       0 
+      2      11       5      25      14      16       4       0       0 
+sbs.m11.chanmap = 
+      2      11       3      20       0      15      11       0       1 
+      2      11       3      20       1      14      10       0       1 
+      2      11       3      20       2      13       9       0       1 
+      2      11       3      20       3      12       8       0       1 
+      2      11       3      20       4      11       7       0       1 
+      2      11       3      20       5      10       6       0       1 
+      2      11       3      20       6       9       5       0       1 
+      2      11       3      20       7       8       4       0       1 
+      2      11       3      20       8       7       3       0       1 
+      2      11       3      20       9       6       2       0       1 
+      2      11       3      20      10       5       1       0       1 
+      2      11       3      20      11       4       0       0       1 
+      2      11       6      20       0       4       9       1       0 
+      2      11       6      20       1       3       8       1       0 
+      2      11       6      20       2       2       7       1       0 
+      2      11       6      20       3       1       6       1       0 
+      2      11       6      20       4       0       5       1       0 
+      2      11       6      20       8      12       0       0       0 
+      2      11       6      20       9      11       1       0       0 
+      2      11       6      20      10      10       2       0       0 
+      2      11       6      20      11       9       3       0       0 
+      2      11       6      20      12       8       4       0       0 
+sbs.m12.chanmap = 
+      2      11       7      17       0      15       0       1       1 
+      2      11       7      17       1      14       1       1       1 
+      2      11       7      17       2      13       2       1       1 
+      2      11       7      17       3      12       3       1       1 
+      2      11       7      17       4      11       4       1       1 
+      2      11       7      17       5      10       5       1       1 
+      2      11       7      17       6       9       6       1       1 
+      2      11       7      17       7       8       7       1       1 
+      2      11       7      17       8       7       8       1       1 
+      2      11       7      17       9       6       9       1       1 
+      2      11       7      17      10       5      10       1       1 
+      2      11       7      17      11       4      11       1       1 
+      2      11      11      17      10       4       9       1       0 
+      2      11      11      17      11       3       8       1       0 
+      2      11      11      17      12       2       7       1       0 
+      2      11      11      17      13       1       6       1       0 
+      2      11      11      17      14       0       5       1       0 
+      2      11      12      17       0       4       0       0       0 
+      2      11      12      17       1       3       1       0       0 
+      2      11      12      17       2       2       2       0       0 
+      2      11      12      17       3       1       3       0       0 
+      2      11      12      17       4       0       4       0       0 
+sbs.m13.chanmap = 
+      2      11       8      14       0      15       0       1       1 
+      2      11       8      14       1      14       1       1       1 
+      2      11       8      14       2      13       2       1       1 
+      2      11       8      14       3      12       3       1       1 
+      2      11       8      14       4      11       4       1       1 
+      2      11       8      14       5      10       5       1       1 
+      2      11       8      14       6       9       6       1       1 
+      2      11       8      14       7       8       7       1       1 
+      2      11       8      14       8       7       8       1       1 
+      2      11       8      14       9       6       9       1       1 
+      2      11       8      14      10       5      10       1       1 
+      2      11       8      14      11       4      11       1       1 
+      2      11      11      14       5      12       9       1       0 
+      2      11      11      14       6      11       8       1       0 
+      2      11      11      14       7      10       7       1       0 
+      2      11      11      14       8       9       6       1       0 
+      2      11      11      14       9       8       5       1       0 
+      2      11      12      14       5      12       0       0       0 
+      2      11      12      14       6      11       1       0       0 
+      2      11      12      14       7      10       2       0       0 
+      2      11      12      14       8       9       3       0       0 
+      2      11      12      14       9       8       4       0       0 
+sbs.m14.chanmap = 
+      2      11       9       7       0      15      11       0       1 
+      2      11       9       7       1      14      10       0       1 
+      2      11       9       7       2      13       9       0       1 
+      2      11       9       7       3      12       8       0       1 
+      2      11       9       7       4      11       7       0       1 
+      2      11       9       7       5      10       6       0       1 
+      2      11       9       7       6       9       5       0       1 
+      2      11       9       7       7       8       4       0       1 
+      2      11       9       7       8       7       3       0       1 
+      2      11       9       7       9       6       2       0       1 
+      2      11       9       7      10       5       1       0       1 
+      2      11       9       7      11       4       0       0       1 
+      2      11      11       7       0      20       9       1       0 
+      2      11      11       7       1      19       8       1       0 
+      2      11      11       7       2      18       7       1       0 
+      2      11      11       7       3      17       6       1       0 
+      2      11      11       7       4      16       5       1       0 
+      2      11      12       7      10      20       0       0       0 
+      2      11      12       7      11      19       1       0       0 
+      2      11      12       7      12      18       2       0       0 
+      2      11      12       7      13      17       3       0       0 
+      2      11      12       7      14      16       4       0       0 
+sbs.m15.chanmap = 
+      2      11      10      16       0      15      11       0       1 
+      2      11      10      16       1      14      10       0       1 
+      2      11      10      16       2      13       9       0       1 
+      2      11      10      16       3      12       8       0       1 
+      2      11      10      16       4      11       7       0       1 
+      2      11      10      16       5      10       6       0       1 
+      2      11      10      16       6       9       5       0       1 
+      2      11      10      16       7       8       4       0       1 
+      2      11      10      16       8       7       3       0       1 
+      2      11      10      16       9       6       2       0       1 
+      2      11      10      16      10       5       1       0       1 
+      2      11      10      16      11       4       0       0       1 
+      2      11      13      16       0       4       9       1       0 
+      2      11      13      16       1       3       8       1       0 
+      2      11      13      16       2       2       7       1       0 
+      2      11      13      16       3       1       6       1       0 
+      2      11      13      16       4       0       5       1       0 
+      2      11      13      16       8      12       0       0       0 
+      2      11      13      16       9      11       1       0       0 
+      2      11      13      16      10      10       2       0       0 
+      2      11      13      16      11       9       3       0       0 
+      2      11      13      16      12       8       4       0       0 
+sbs.m16.chanmap = 
+      2      11      14       1       0      15       0       1       1 
+      2      11      14       1       1      14       1       1       1 
+      2      11      14       1       2      13       2       1       1 
+      2      11      14       1       3      12       3       1       1 
+      2      11      14       1       4      11       4       1       1 
+      2      11      14       1       5      10       5       1       1 
+      2      11      14       1       6       9       6       1       1 
+      2      11      14       1       7       8       7       1       1 
+      2      11      14       1       8       7       8       1       1 
+      2      11      14       1       9       6       9       1       1 
+      2      11      14       1      10       5      10       1       1 
+      2      11      14       1      11       4      11       1       1 
+      2      11      18       1      10       4       9       1       0 
+      2      11      18       1      11       3       8       1       0 
+      2      11      18       1      12       2       7       1       0 
+      2      11      18       1      13       1       6       1       0 
+      2      11      18       1      14       0       5       1       0 
+      2      11      19       1       0       4       0       0       0 
+      2      11      19       1       1       3       1       0       0 
+      2      11      19       1       2       2       2       0       0 
+      2      11      19       1       3       1       3       0       0 
+      2      11      19       1       4       0       4       0       0 
+sbs.m17.chanmap = 
+      2      11      15       8       0      15       0       1       1 
+      2      11      15       8       1      14       1       1       1 
+      2      11      15       8       2      13       2       1       1 
+      2      11      15       8       3      12       3       1       1 
+      2      11      15       8       4      11       4       1       1 
+      2      11      15       8       5      10       5       1       1 
+      2      11      15       8       6       9       6       1       1 
+      2      11      15       8       7       8       7       1       1 
+      2      11      15       8       8       7       8       1       1 
+      2      11      15       8       9       6       9       1       1 
+      2      11      15       8      10       5      10       1       1 
+      2      11      15       8      11       4      11       1       1 
+      2      11      18       8       5      12       9       1       0 
+      2      11      18       8       6      11       8       1       0 
+      2      11      18       8       7      10       7       1       0 
+      2      11      18       8       8       9       6       1       0 
+      2      11      18       8       9       8       5       1       0 
+      2      11      19       8       5      12       0       0       0 
+      2      11      19       8       6      11       1       0       0 
+      2      11      19       8       7      10       2       0       0 
+      2      11      19       8       8       9       3       0       0 
+      2      11      19       8       9       8       4       0       0 
+sbs.m18.chanmap = 
+      2      11      16      21       0      15      11       0       1 
+      2      11      16      21       1      14      10       0       1 
+      2      11      16      21       2      13       9       0       1 
+      2      11      16      21       3      12       8       0       1 
+      2      11      16      21       4      11       7       0       1 
+      2      11      16      21       5      10       6       0       1 
+      2      11      16      21       6       9       5       0       1 
+      2      11      16      21       7       8       4       0       1 
+      2      11      16      21       8       7       3       0       1 
+      2      11      16      21       9       6       2       0       1 
+      2      11      16      21      10       5       1       0       1 
+      2      11      16      21      11       4       0       0       1 
+      2      11      18      21       0      20       9       1       0 
+      2      11      18      21       1      19       8       1       0 
+      2      11      18      21       2      18       7       1       0 
+      2      11      18      21       3      17       6       1       0 
+      2      11      18      21       4      16       5       1       0 
+      2      11      19      21      10      20       0       0       0 
+      2      11      19      21      11      19       1       0       0 
+      2      11      19      21      12      18       2       0       0 
+      2      11      19      21      13      17       3       0       0 
+      2      11      19      21      14      16       4       0       0 
+sbs.m19.chanmap = 
+      2      11      17      26       0      15      11       0       1 
+      2      11      17      26       1      14      10       0       1 
+      2      11      17      26       2      13       9       0       1 
+      2      11      17      26       3      12       8       0       1 
+      2      11      17      26       4      11       7       0       1 
+      2      11      17      26       5      10       6       0       1 
+      2      11      17      26       6       9       5       0       1 
+      2      11      17      26       7       8       4       0       1 
+      2      11      17      26       8       7       3       0       1 
+      2      11      17      26       9       6       2       0       1 
+      2      11      17      26      10       5       1       0       1 
+      2      11      17      26      11       4       0       0       1 
+      2      11      20      26       0       4       9       1       0 
+      2      11      20      26       1       3       8       1       0 
+      2      11      20      26       2       2       7       1       0 
+      2      11      20      26       3       1       6       1       0 
+      2      11      20      26       4       0       5       1       0 
+      2      11      20      26       8      12       0       0       0 
+      2      11      20      26       9      11       1       0       0 
+      2      11      20      26      10      10       2       0       0 
+      2      11      20      26      11       9       3       0       0 
+      2      11      20      26      12       8       4       0       0 
+sbs.m20.chanmap = 
+      2      11      21       2       0      15       0       1       1 
+      2      11      21       2       1      14       1       1       1 
+      2      11      21       2       2      13       2       1       1 
+      2      11      21       2       3      12       3       1       1 
+      2      11      21       2       4      11       4       1       1 
+      2      11      21       2       5      10       5       1       1 
+      2      11      21       2       6       9       6       1       1 
+      2      11      21       2       7       8       7       1       1 
+      2      11      21       2       8       7       8       1       1 
+      2      11      21       2       9       6       9       1       1 
+      2      11      21       2      10       5      10       1       1 
+      2      11      21       2      11       4      11       1       1 
+      2      11      25       2      10       4       9       1       0 
+      2      11      25       2      11       3       8       1       0 
+      2      11      25       2      12       2       7       1       0 
+      2      11      25       2      13       1       6       1       0 
+      2      11      25       2      14       0       5       1       0 
+      2      11      26       2       0       4       0       0       0 
+      2      11      26       2       1       3       1       0       0 
+      2      11      26       2       2       2       2       0       0 
+      2      11      26       2       3       1       3       0       0 
+      2      11      26       2       4       0       4       0       0 
+sbs.m21.chanmap = 
+      2      11      22      49       0      15       0       1       1 
+      2      11      22      49       1      14       1       1       1 
+      2      11      22      49       2      13       2       1       1 
+      2      11      22      49       3      12       3       1       1 
+      2      11      22      49       4      11       4       1       1 
+      2      11      22      49       5      10       5       1       1 
+      2      11      22      49       6       9       6       1       1 
+      2      11      22      49       7       8       7       1       1 
+      2      11      22      49       8       7       8       1       1 
+      2      11      22      49       9       6       9       1       1 
+      2      11      22      49      10       5      10       1       1 
+      2      11      22      49      11       4      11       1       1 
+      2      11      25      49       5      12       9       1       0 
+      2      11      25      49       6      11       8       1       0 
+      2      11      25      49       7      10       7       1       0 
+      2      11      25      49       8       9       6       1       0 
+      2      11      25      49       9       8       5       1       0 
+      2      11      26      49       5      12       0       0       0 
+      2      11      26      49       6      11       1       0       0 
+      2      11      26      49       7      10       2       0       0 
+      2      11      26      49       8       9       3       0       0 
+      2      11      26      49       9       8       4       0       0 
+sbs.m22.chanmap = 
+      2      11      23      11       0      15      11       0       1 
+      2      11      23      11       1      14      10       0       1 
+      2      11      23      11       2      13       9       0       1 
+      2      11      23      11       3      12       8       0       1 
+      2      11      23      11       4      11       7       0       1 
+      2      11      23      11       5      10       6       0       1 
+      2      11      23      11       6       9       5       0       1 
+      2      11      23      11       7       8       4       0       1 
+      2      11      23      11       8       7       3       0       1 
+      2      11      23      11       9       6       2       0       1 
+      2      11      23      11      10       5       1       0       1 
+      2      11      23      11      11       4       0       0       1 
+      2      11      25      11       0      20       9       1       0 
+      2      11      25      11       1      19       8       1       0 
+      2      11      25      11       2      18       7       1       0 
+      2      11      25      11       3      17       6       1       0 
+      2      11      25      11       4      16       5       1       0 
+      2      11      26      11      10      20       0       0       0 
+      2      11      26      11      11      19       1       0       0 
+      2      11      26      11      12      18       2       0       0 
+      2      11      26      11      13      17       3       0       0 
+      2      11      26      11      14      16       4       0       0 
+sbs.m23.chanmap = 
+      2      11      24      47       0      15      11       0       1 
+      2      11      24      47       1      14      10       0       1 
+      2      11      24      47       2      13       9       0       1 
+      2      11      24      47       3      12       8       0       1 
+      2      11      24      47       4      11       7       0       1 
+      2      11      24      47       5      10       6       0       1 
+      2      11      24      47       6       9       5       0       1 
+      2      11      24      47       7       8       4       0       1 
+      2      11      24      47       8       7       3       0       1 
+      2      11      24      47       9       6       2       0       1 
+      2      11      24      47      10       5       1       0       1 
+      2      11      24      47      11       4       0       0       1 
+      2      11      27      47       0       4       9       1       0 
+      2      11      27      47       1       3       8       1       0 
+      2      11      27      47       2       2       7       1       0 
+      2      11      27      47       3       1       6       1       0 
+      2      11      27      47       4       0       5       1       0 
+      2      11      27      47       8      12       0       0       0 
+      2      11      27      47       9      11       1       0       0 
+      2      11      27      47      10      10       2       0       0 
+      2      11      27      47      11       9       3       0       0 
+      2      11      27      47      12       8       4       0       0 
+sbs.m24.chanmap = 
+      2      11      28      23       0      15       0       1       1 
+      2      11      28      23       1      14       1       1       1 
+      2      11      28      23       2      13       2       1       1 
+      2      11      28      23       3      12       3       1       1 
+      2      11      28      23       4      11       4       1       1 
+      2      11      28      23       5      10       5       1       1 
+      2      11      28      23       6       9       6       1       1 
+      2      11      28      23       7       8       7       1       1 
+      2      11      28      23       8       7       8       1       1 
+      2      11      28      23       9       6       9       1       1 
+      2      11      28      23      10       5      10       1       1 
+      2      11      28      23      11       4      11       1       1 
+      2      11      32      23      10       4       9       1       0 
+      2      11      32      23      11       3       8       1       0 
+      2      11      32      23      12       2       7       1       0 
+      2      11      32      23      13       1       6       1       0 
+      2      11      32      23      14       0       5       1       0 
+      2      11      33      23       0       4       0       0       0 
+      2      11      33      23       1       3       1       0       0 
+      2      11      33      23       2       2       2       0       0 
+      2      11      33      23       3       1       3       0       0 
+      2      11      33      23       4       0       4       0       0 
+sbs.m25.chanmap = 
+      2      11      29      89       0      15       0       1       1 
+      2      11      29      89       1      14       1       1       1 
+      2      11      29      89       2      13       2       1       1 
+      2      11      29      89       3      12       3       1       1 
+      2      11      29      89       4      11       4       1       1 
+      2      11      29      89       5      10       5       1       1 
+      2      11      29      89       6       9       6       1       1 
+      2      11      29      89       7       8       7       1       1 
+      2      11      29      89       8       7       8       1       1 
+      2      11      29      89       9       6       9       1       1 
+      2      11      29      89      10       5      10       1       1 
+      2      11      29      89      11       4      11       1       1 
+      2      11      32      89       5      12       9       1       0 
+      2      11      32      89       6      11       8       1       0 
+      2      11      32      89       7      10       7       1       0 
+      2      11      32      89       8       9       6       1       0 
+      2      11      32      89       9       8       5       1       0 
+      2      11      33      89       5      12       0       0       0 
+      2      11      33      89       6      11       1       0       0 
+      2      11      33      89       7      10       2       0       0 
+      2      11      33      89       8       9       3       0       0 
+      2      11      33      89       9       8       4       0       0 
+sbs.m26.chanmap = 
+      2      11      30      88       0      15      11       0       1 
+      2      11      30      88       1      14      10       0       1 
+      2      11      30      88       2      13       9       0       1 
+      2      11      30      88       3      12       8       0       1 
+      2      11      30      88       4      11       7       0       1 
+      2      11      30      88       5      10       6       0       1 
+      2      11      30      88       6       9       5       0       1 
+      2      11      30      88       7       8       4       0       1 
+      2      11      30      88       8       7       3       0       1 
+      2      11      30      88       9       6       2       0       1 
+      2      11      30      88      10       5       1       0       1 
+      2      11      30      88      11       4       0       0       1 
+      2      11      32      88       0      20       9       1       0 
+      2      11      32      88       1      19       8       1       0 
+      2      11      32      88       2      18       7       1       0 
+      2      11      32      88       3      17       6       1       0 
+      2      11      32      88       4      16       5       1       0 
+      2      11      33      88      10      20       0       0       0 
+      2      11      33      88      11      19       1       0       0 
+      2      11      33      88      12      18       2       0       0 
+      2      11      33      88      13      17       3       0       0 
+      2      11      33      88      14      16       4       0       0 
+sbs.m27.chanmap = 
+      2      11      31      41       0      15      11       0       1 
+      2      11      31      41       1      14      10       0       1 
+      2      11      31      41       2      13       9       0       1 
+      2      11      31      41       3      12       8       0       1 
+      2      11      31      41       4      11       7       0       1 
+      2      11      31      41       5      10       6       0       1 
+      2      11      31      41       6       9       5       0       1 
+      2      11      31      41       7       8       4       0       1 
+      2      11      31      41       8       7       3       0       1 
+      2      11      31      41       9       6       2       0       1 
+      2      11      31      41      10       5       1       0       1 
+      2      11      31      41      11       4       0       0       1 
+      2      11      34      41       0       4       9       1       0 
+      2      11      34      41       1       3       8       1       0 
+      2      11      34      41       2       2       7       1       0 
+      2      11      34      41       3       1       6       1       0 
+      2      11      34      41       4       0       5       1       0 
+      2      11      34      41       8      12       0       0       0 
+      2      11      34      41       9      11       1       0       0 
+      2      11      34      41      10      10       2       0       0 
+      2      11      34      41      11       9       3       0       0 
+      2      11      34      41      12       8       4       0       0 
+sbs.m28.chanmap = 
+      2      11      35       3       0      15       0       1       1 
+      2      11      35       3       1      14       1       1       1 
+      2      11      35       3       2      13       2       1       1 
+      2      11      35       3       3      12       3       1       1 
+      2      11      35       3       4      11       4       1       1 
+      2      11      35       3       5      10       5       1       1 
+      2      11      35       3       6       9       6       1       1 
+      2      11      35       3       7       8       7       1       1 
+      2      11      35       3       8       7       8       1       1 
+      2      11      35       3       9       6       9       1       1 
+      2      11      35       3      10       5      10       1       1 
+      2      11      35       3      11       4      11       1       1 
+      4      11       3       3      10       4       9       1       0 
+      4      11       3       3      11       3       8       1       0 
+      4      11       3       3      12       2       7       1       0 
+      4      11       3       3      13       1       6       1       0 
+      4      11       3       3      14       0       5       1       0 
+      4      11       4       3       0       4       0       0       0 
+      4      11       4       3       1       3       1       0       0 
+      4      11       4       3       2       2       2       0       0 
+      4      11       4       3       3       1       3       0       0 
+      4      11       4       3       4       0       4       0       0 
+sbs.m29.chanmap = 
+      4      11       0      13       0      15       0       1       1 
+      4      11       0      13       1      14       1       1       1 
+      4      11       0      13       2      13       2       1       1 
+      4      11       0      13       3      12       3       1       1 
+      4      11       0      13       4      11       4       1       1 
+      4      11       0      13       5      10       5       1       1 
+      4      11       0      13       6       9       6       1       1 
+      4      11       0      13       7       8       7       1       1 
+      4      11       0      13       8       7       8       1       1 
+      4      11       0      13       9       6       9       1       1 
+      4      11       0      13      10       5      10       1       1 
+      4      11       0      13      11       4      11       1       1 
+      4      11       3      13       5      12       9       1       0 
+      4      11       3      13       6      11       8       1       0 
+      4      11       3      13       7      10       7       1       0 
+      4      11       3      13       8       9       6       1       0 
+      4      11       3      13       9       8       5       1       0 
+      4      11       4      13       5      12       0       0       0 
+      4      11       4      13       6      11       1       0       0 
+      4      11       4      13       7      10       2       0       0 
+      4      11       4      13       8       9       3       0       0 
+      4      11       4      13       9       8       4       0       0 
+sbs.m30.chanmap = 
+      4      11       1      19       0      15      11       0       1 
+      4      11       1      19       1      14      10       0       1 
+      4      11       1      19       2      13       9       0       1 
+      4      11       1      19       3      12       8       0       1 
+      4      11       1      19       4      11       7       0       1 
+      4      11       1      19       5      10       6       0       1 
+      4      11       1      19       6       9       5       0       1 
+      4      11       1      19       7       8       4       0       1 
+      4      11       1      19       8       7       3       0       1 
+      4      11       1      19       9       6       2       0       1 
+      4      11       1      19      10       5       1       0       1 
+      4      11       1      19      11       4       0       0       1 
+      4      11       3      19       0      20       9       1       0 
+      4      11       3      19       1      19       8       1       0 
+      4      11       3      19       2      18       7       1       0 
+      4      11       3      19       3      17       6       1       0 
+      4      11       3      19       4      16       5       1       0 
+      4      11       4      19      10      20       0       0       0 
+      4      11       4      19      11      19       1       0       0 
+      4      11       4      19      12      18       2       0       0 
+      4      11       4      19      13      17       3       0       0 
+      4      11       4      19      14      16       4       0       0 
+sbs.m31.chanmap = 
+      4      11       2      15       0      15      11       0       1 
+      4      11       2      15       1      14      10       0       1 
+      4      11       2      15       2      13       9       0       1 
+      4      11       2      15       3      12       8       0       1 
+      4      11       2      15       4      11       7       0       1 
+      4      11       2      15       5      10       6       0       1 
+      4      11       2      15       6       9       5       0       1 
+      4      11       2      15       7       8       4       0       1 
+      4      11       2      15       8       7       3       0       1 
+      4      11       2      15       9       6       2       0       1 
+      4      11       2      15      10       5       1       0       1 
+      4      11       2      15      11       4       0       0       1 
+      4      11       5      15       0       4       9       1       0 
+      4      11       5      15       1       3       8       1       0 
+      4      11       5      15       2       2       7       1       0 
+      4      11       5      15       3       1       6       1       0 
+      4      11       5      15       4       0       5       1       0 
+      4      11       5      15       8      12       0       0       0 
+      4      11       5      15       9      11       1       0       0 
+      4      11       5      15      10      10       2       0       0 
+      4      11       5      15      11       9       3       0       0 
+      4      11       5      15      12       8       4       0       0 
+
+
+############ END TIME-DEPENDENT DECODE MAP ENTRIES
+
+
+
+################### BEGIN TIME-DEPENDENT ALIGNMENT ENTRIES ##################################
+
+--------[ 2021-10-04 22:36:00 ] # start of run 1109, the first good run that I'm aware of with "final" alignment
+
+#sbs.gem.m0.position =               0               0               0
+#sbs.gem.m0.angle =               0               0               0
+#sbs.gem.m1.position =       0.5300309   -0.0009352402       0.1323192
+#sbs.gem.m1.angle =      0.02040032      -0.2395929      -0.1484627
+#sbs.gem.m2.position =    -0.004841307     0.002251292       0.1301795
+#sbs.gem.m2.angle =     -0.00454369       0.0555466      -0.3602672
+#sbs.gem.m3.position =      -0.5409744     0.005976331       0.1312271
+#sbs.gem.m3.angle =      -0.1770143       0.1150538      -0.3739135
+#sbs.gem.m4.position =    -0.007615015     0.006147694       0.2785995
+#sbs.gem.m4.angle =     0.007217669      0.02774985      -0.2917705
+#sbs.gem.m5.position =       0.5248454     0.003590538       0.4149689
+#sbs.gem.m5.angle =      0.04011928     -0.05172014      -0.1495347
+#sbs.gem.m6.position =     -0.01012342     0.004511144       0.4153096
+#sbs.gem.m6.angle =      0.05874682       0.2238616     -0.02464266
+#sbs.gem.m7.position =          -0.535               0          0.4112
+#sbs.gem.m7.angle =               0               0               0
+#sbs.gem.m8.position =      -0.7644073    0.0006477928        1.570592
+#sbs.gem.m8.angle =     -0.06513717        -0.16519      -0.3436074
+#sbs.gem.m9.position =      -0.2525128    -0.003198669         1.53115
+#sbs.gem.m9.angle =      -0.2332181      -0.1432915      -0.3094737
+#sbs.gem.m10.position =       0.2584583     -0.00895465        1.574429
+#sbs.gem.m10.angle =     -0.07203803      -0.1235775      -0.2606025
+#sbs.gem.m11.position =       0.7707726     -0.01274326        1.533101
+#sbs.gem.m11.angle =      -0.3718366      -0.2452109       -0.273524
+#sbs.gem.m12.position =               0               0               0
+#sbs.gem.m12.angle =               0               0               0
+#sbs.gem.m13.position =       0.5300309   -0.0009352402       0.1323192
+#sbs.gem.m13.angle =      0.02040032      -0.2395929      -0.1484627
+#sbs.gem.m14.position =    -0.004841307     0.002251292       0.1301795
+#sbs.gem.m14.angle =     -0.00454369       0.0555466      -0.3602672
+#sbs.gem.m15.position =      -0.5409744     0.005976331       0.1312271
+#sbs.gem.m15.angle =      -0.1770143       0.1150538      -0.3739135
+#sbs.gem.m16.position =    -0.007615015     0.006147694       0.2785995
+#sbs.gem.m16.angle =     0.007217669      0.02774985      -0.2917705
+#sbs.gem.m17.position =       0.5248454     0.003590538       0.4149689
+#sbs.gem.m17.angle =      0.04011928     -0.05172014      -0.1495347
+#sbs.gem.m18.position =     -0.01012342     0.004511144       0.4153096
+#sbs.gem.m18.angle =      0.05874682       0.2238616     -0.02464266
+#sbs.gem.m19.position =          -0.535               0          0.4112
+#sbs.gem.m19.angle =               0               0               0
+#sbs.gem.m20.position =      -0.7644073    0.0006477928        1.570592
+#sbs.gem.m20.angle =     -0.06513717        -0.16519      -0.3436074
+#sbs.gem.m21.position =      -0.2525128    -0.003198669         1.53115
+#sbs.gem.m21.angle =      -0.2332181      -0.1432915      -0.3094737
+#sbs.gem.m22.position =       0.2584583     -0.00895465        1.574429
+#sbs.gem.m22.angle =     -0.07203803      -0.1235775      -0.2606025
+#sbs.gem.m23.position =       0.7707726     -0.01274326        1.533101
+#sbs.gem.m23.angle =      -0.3718366      -0.2452109       -0.273524
+#sbs.gem.m24.position =               0               0               0
+#sbs.gem.m24.angle =               0               0               0
+#sbs.gem.m25.position =       0.5300309   -0.0009352402       0.1323192
+#sbs.gem.m25.angle =      0.02040032      -0.2395929      -0.1484627
+#sbs.gem.m26.position =    -0.004841307     0.002251292       0.1301795
+#sbs.gem.m26.angle =     -0.00454369       0.0555466      -0.3602672
+#sbs.gem.m27.position =      -0.5409744     0.005976331       0.1312271
+#sbs.gem.m27.angle =      -0.1770143       0.1150538      -0.3739135
+#sbs.gem.m28.position =    -0.007615015     0.006147694       0.2785995
+#sbs.gem.m28.angle =     0.007217669      0.02774985      -0.2917705
+#sbs.gem.m29.position =       0.5248454     0.003590538       0.4149689
+#sbs.gem.m29.angle =      0.04011928     -0.05172014      -0.1495347
+#sbs.gem.m30.position =     -0.01012342     0.004511144       0.4153096
+#sbs.gem.m30.angle =      0.05874682       0.2238616     -0.02464266
+#sbs.gem.m31.position =          -0.535               0          0.4112
+#sbs.gem.m31.angle =               0               0               0
+
+########################### END TIME-DEPENDENT ALIGNMENT PARAMETERS 
+
+#################### BEGIN TIME-DEPENDENT GAIN MATCH PARAMETERS ##############################
+-------[ 2021-01-01 00:00:00 ] # initially, we were running at lower HV, these parameters are from SBS-1 optics data:
+
+#Module internal relative gains by APV card: 
+sbs.gem.m0.vgain = 1  1  0.922788  0.868468  0.84795  0.854752  0.840927  0.812182  0.824985  0.897269  0.909287  0.825  0.833803  0.852752  0.865516  0.895084  0.863674  0.912388  0.929856  0.946513  0.901281  0.937671  0.931435  0.927749  0.918065  0.904849  1.04538  1.07406  1.17524  1  
+sbs.gem.m0.ugain = 1  1.12969  0.982299  0.910987  0.917517  1.028  0.91389  0.969501  0.887228  0.967483  0.891437  0.932717  1  0.967796  0.932223  0.981003  1.02996  0.982872  1.04916  1.02479  1.04176  1.04898  1.10283  1.02383  1.08466  1.15114  1.1012  1.22265  1  1  
+sbs.gem.m1.vgain = 0.834677  0.936815  0.926078  0.992003  0.982374  0.959832  0.953892  1  
+sbs.gem.m1.ugain = 0.98402  1.14722  1.02382  1.17778  1.17857  1.12681  1.21804  1.02897  1.13128  1  
+sbs.gem.m2.vgain = 0.922182  0.992759  1.00046  1.01103  0.974527  0.990518  0.974219  1  
+sbs.gem.m2.ugain = 0.901511  0.96341  0.943244  1  1.00683  1.0195  1.03975  0.943573  1.05399  0.955832  
+sbs.gem.m3.vgain = 0.746919  0.855883  0.793305  0.898179  0.894198  0.94549  0.987106  1  
+sbs.gem.m3.ugain = 1  0.962197  1.01866  0.897486  0.91264  0.916954  0.92726  0.888314  0.842845  0.780455  
+sbs.gem.m4.vgain = 1  1  0.908483  0.861523  0.870762  0.894558  0.918363  0.86584  0.917447  0.900065  0.931988  0.888258  0.900339  0.866696  0.904625  0.895892  0.909609  0.901222  0.903116  0.966236  0.933901  0.905593  1.09444  0.915333  0.919532  0.911813  0.997771  1.0059  1.1446  1  
+sbs.gem.m4.ugain = 1  1.32552  1.1755  1  1.02688  0.969465  0.9567  1.02503  0.963719  1.00959  0.952652  0.946918  0.965749  1  0.9928  0.964212  0.975184  0.944532  1.00474  0.990463  0.958997  0.994467  0.987853  0.973374  0.996838  0.943026  1.24062  1.17362  1.27841  1  
+sbs.gem.m5.vgain = 1.00038  1.10874  0.936689  1.09039  1.08088  0.993479  0.975173  0.908546  
+sbs.gem.m5.ugain = 0.974903  0.970055  1.01891  0.979843  0.995483  0.991839  0.994148  0.926615  0.962828  1  
+sbs.gem.m6.vgain = 1.44504  1.4656  1.35181  1.38701  1.43499  1.3773  1.46336  1.3702  
+sbs.gem.m6.ugain = 1.20865  1.15118  1.03908  1  0.892997  0.851192  0.859832  0.899839  0.925309  0.933918  
+sbs.gem.m7.vgain = 1  1  1  1  1  1  1  1  
+sbs.gem.m7.ugain = 1  1  1  1  1  1  1  1  1  1  
+sbs.gem.m8.vgain = 1.20762  1.46186  1.47289  1.52728  1.42734  1.46237  1.54609  1.57153  1.38926  1.51197  1.39925  1.47964  
+sbs.gem.m8.ugain = 1.04355  1.08157  0.991193  0.980462  1.07556  1.01484  0.997567  0.981134  0.971901  1  
+sbs.gem.m9.vgain = 0.986325  1.07143  1.0652  1.05772  1.06236  1.16748  1.11773  1.18123  1.16681  1.12572  1.16477  1  
+sbs.gem.m9.ugain = 0.909907  0.859424  0.88184  0.833333  0.850128  0.915828  1.04332  0.896299  0.974283  1  
+sbs.gem.m10.vgain = 0.982756  0.953853  1.01486  0.9776  0.901376  0.974171  0.947625  0.991018  0.941061  0.900823  0.901122  0.720588  
+sbs.gem.m10.ugain = 1.02865  0.918693  0.931512  0.96831  1.02504  1  1.01036  1.06258  1.08999  1.16642  
+sbs.gem.m11.vgain = 1  1  1.33634  1.41503  1.44152  1.31617  1.30393  1.29733  1.2852  1.30906  1.17912  1  
+sbs.gem.m11.ugain = 1  0.917205  0.988728  0.975045  1.00739  1.01275  0.981746  0.977806  1.02512  1  
+sbs.gem.m12.vgain = 1  1  0.922788  0.868468  0.84795  0.854752  0.840927  0.812182  0.824985  0.897269  0.909287  0.825  0.833803  0.852752  0.865516  0.895084  0.863674  0.912388  0.929856  0.946513  0.901281  0.937671  0.931435  0.927749  0.918065  0.904849  1.04538  1.07406  1.17524  1  
+sbs.gem.m12.ugain = 1  1.12969  0.982299  0.910987  0.917517  1.028  0.91389  0.969501  0.887228  0.967483  0.891437  0.932717  1  0.967796  0.932223  0.981003  1.02996  0.982872  1.04916  1.02479  1.04176  1.04898  1.10283  1.02383  1.08466  1.15114  1.1012  1.22265  1  1  
+sbs.gem.m13.vgain = 0.834677  0.936815  0.926078  0.992003  0.982374  0.959832  0.953892  1  
+sbs.gem.m13.ugain = 0.98402  1.14722  1.02382  1.17778  1.17857  1.12681  1.21804  1.02897  1.13128  1  
+sbs.gem.m14.vgain = 0.922182  0.992759  1.00046  1.01103  0.974527  0.990518  0.974219  1  
+sbs.gem.m14.ugain = 0.901511  0.96341  0.943244  1  1.00683  1.0195  1.03975  0.943573  1.05399  0.955832  
+sbs.gem.m15.vgain = 0.746919  0.855883  0.793305  0.898179  0.894198  0.94549  0.987106  1  
+sbs.gem.m15.ugain = 1  0.962197  1.01866  0.897486  0.91264  0.916954  0.92726  0.888314  0.842845  0.780455  
+sbs.gem.m16.vgain = 1  1  0.908483  0.861523  0.870762  0.894558  0.918363  0.86584  0.917447  0.900065  0.931988  0.888258  0.900339  0.866696  0.904625  0.895892  0.909609  0.901222  0.903116  0.966236  0.933901  0.905593  1.09444  0.915333  0.919532  0.911813  0.997771  1.0059  1.1446  1  
+sbs.gem.m16.ugain = 1  1.32552  1.1755  1  1.02688  0.969465  0.9567  1.02503  0.963719  1.00959  0.952652  0.946918  0.965749  1  0.9928  0.964212  0.975184  0.944532  1.00474  0.990463  0.958997  0.994467  0.987853  0.973374  0.996838  0.943026  1.24062  1.17362  1.27841  1  
+sbs.gem.m17.vgain = 1.00038  1.10874  0.936689  1.09039  1.08088  0.993479  0.975173  0.908546  
+sbs.gem.m17.ugain = 0.974903  0.970055  1.01891  0.979843  0.995483  0.991839  0.994148  0.926615  0.962828  1  
+sbs.gem.m18.vgain = 1.44504  1.4656  1.35181  1.38701  1.43499  1.3773  1.46336  1.3702  
+sbs.gem.m18.ugain = 1.20865  1.15118  1.03908  1  0.892997  0.851192  0.859832  0.899839  0.925309  0.933918  
+sbs.gem.m19.vgain = 1  1  1  1  1  1  1  1  
+sbs.gem.m19.ugain = 1  1  1  1  1  1  1  1  1  1  
+sbs.gem.m20.vgain = 1.20762  1.46186  1.47289  1.52728  1.42734  1.46237  1.54609  1.57153  1.38926  1.51197  1.39925  1.47964  
+sbs.gem.m20.ugain = 1.04355  1.08157  0.991193  0.980462  1.07556  1.01484  0.997567  0.981134  0.971901  1  
+sbs.gem.m21.vgain = 0.986325  1.07143  1.0652  1.05772  1.06236  1.16748  1.11773  1.18123  1.16681  1.12572  1.16477  1  
+sbs.gem.m21.ugain = 0.909907  0.859424  0.88184  0.833333  0.850128  0.915828  1.04332  0.896299  0.974283  1  
+sbs.gem.m22.vgain = 0.982756  0.953853  1.01486  0.9776  0.901376  0.974171  0.947625  0.991018  0.941061  0.900823  0.901122  0.720588  
+sbs.gem.m22.ugain = 1.02865  0.918693  0.931512  0.96831  1.02504  1  1.01036  1.06258  1.08999  1.16642  
+sbs.gem.m23.vgain = 1  1  1.33634  1.41503  1.44152  1.31617  1.30393  1.29733  1.2852  1.30906  1.17912  1  
+sbs.gem.m23.ugain = 1  0.917205  0.988728  0.975045  1.00739  1.01275  0.981746  0.977806  1.02512  1  
+sbs.gem.m24.vgain = 1  1  0.922788  0.868468  0.84795  0.854752  0.840927  0.812182  0.824985  0.897269  0.909287  0.825  0.833803  0.852752  0.865516  0.895084  0.863674  0.912388  0.929856  0.946513  0.901281  0.937671  0.931435  0.927749  0.918065  0.904849  1.04538  1.07406  1.17524  1  
+sbs.gem.m24.ugain = 1  1.12969  0.982299  0.910987  0.917517  1.028  0.91389  0.969501  0.887228  0.967483  0.891437  0.932717  1  0.967796  0.932223  0.981003  1.02996  0.982872  1.04916  1.02479  1.04176  1.04898  1.10283  1.02383  1.08466  1.15114  1.1012  1.22265  1  1  
+sbs.gem.m25.vgain = 0.834677  0.936815  0.926078  0.992003  0.982374  0.959832  0.953892  1  
+sbs.gem.m25.ugain = 0.98402  1.14722  1.02382  1.17778  1.17857  1.12681  1.21804  1.02897  1.13128  1  
+sbs.gem.m26.vgain = 0.922182  0.992759  1.00046  1.01103  0.974527  0.990518  0.974219  1  
+sbs.gem.m26.ugain = 0.901511  0.96341  0.943244  1  1.00683  1.0195  1.03975  0.943573  1.05399  0.955832  
+sbs.gem.m27.vgain = 0.746919  0.855883  0.793305  0.898179  0.894198  0.94549  0.987106  1  
+sbs.gem.m27.ugain = 1  0.962197  1.01866  0.897486  0.91264  0.916954  0.92726  0.888314  0.842845  0.780455  
+sbs.gem.m28.vgain = 1  1  0.908483  0.861523  0.870762  0.894558  0.918363  0.86584  0.917447  0.900065  0.931988  0.888258  0.900339  0.866696  0.904625  0.895892  0.909609  0.901222  0.903116  0.966236  0.933901  0.905593  1.09444  0.915333  0.919532  0.911813  0.997771  1.0059  1.1446  1  
+sbs.gem.m28.ugain = 1  1.32552  1.1755  1  1.02688  0.969465  0.9567  1.02503  0.963719  1.00959  0.952652  0.946918  0.965749  1  0.9928  0.964212  0.975184  0.944532  1.00474  0.990463  0.958997  0.994467  0.987853  0.973374  0.996838  0.943026  1.24062  1.17362  1.27841  1  
+sbs.gem.m29.vgain = 1.00038  1.10874  0.936689  1.09039  1.08088  0.993479  0.975173  0.908546  
+sbs.gem.m29.ugain = 0.974903  0.970055  1.01891  0.979843  0.995483  0.991839  0.994148  0.926615  0.962828  1  
+sbs.gem.m30.vgain = 1.44504  1.4656  1.35181  1.38701  1.43499  1.3773  1.46336  1.3702  
+sbs.gem.m30.ugain = 1.20865  1.15118  1.03908  1  0.892997  0.851192  0.859832  0.899839  0.925309  0.933918  
+sbs.gem.m31.vgain = 1  1  1  1  1  1  1  1  
+sbs.gem.m31.ugain = 1  1  1  1  1  1  1  1  1  1 
+
+# Module average gains relative to target ADC peak position of 4000
+sbs.gem.m0.modulegain = 0.611979
+sbs.gem.m1.modulegain = 0.592877
+sbs.gem.m2.modulegain = 0.669019
+sbs.gem.m3.modulegain = 0.669415
+sbs.gem.m4.modulegain = 0.578455
+sbs.gem.m5.modulegain = 0.632566
+sbs.gem.m6.modulegain = 0.450249
+sbs.gem.m7.modulegain = 0.557015
+sbs.gem.m8.modulegain = 1.19897
+sbs.gem.m9.modulegain = 0.530478
+sbs.gem.m10.modulegain = 0.553906
+sbs.gem.m11.modulegain = 0.612277
+sbs.gem.m12.modulegain = 0.611979
+sbs.gem.m13.modulegain = 0.592877
+sbs.gem.m14.modulegain = 0.669019
+sbs.gem.m15.modulegain = 0.669415
+sbs.gem.m16.modulegain = 0.578455
+sbs.gem.m17.modulegain = 0.632566
+sbs.gem.m18.modulegain = 0.450249
+sbs.gem.m19.modulegain = 0.557015
+sbs.gem.m20.modulegain = 1.19897
+sbs.gem.m21.modulegain = 0.530478
+sbs.gem.m22.modulegain = 0.553906
+sbs.gem.m23.modulegain = 0.612277
+sbs.gem.m24.modulegain = 0.611979
+sbs.gem.m25.modulegain = 0.592877
+sbs.gem.m26.modulegain = 0.669019
+sbs.gem.m27.modulegain = 0.669415
+sbs.gem.m28.modulegain = 0.578455
+sbs.gem.m29.modulegain = 0.632566
+sbs.gem.m30.modulegain = 0.450249
+sbs.gem.m31.modulegain = 0.557015
+
+
+######################### END TIME-DEPENDENT GAIN-MATCH PARAMETERS $$$$$$$$$$$$$$$$$$$$$$$$
+
+###################### BEGIN TIME-DEPENDENT CLUSTERING PARAMETERS #############
+
+-----------[ 2021-10-17 19:12:00 ] # new higher thresholds after GEM HV increase
+sbs.gem.threshold_sample = 150.0
+sbs.gem.threshold_stripsum = 500.0
+sbs.gem.threshold_clustersum = 1000.0
+
+###############################################################################
+
+###################### BEGIN TIME-DEPENDENT OPTICS constraints for track search #############
+
+-----------[ 2021-01-01 00:00:00 ] # at SBS-1, the max. good electron momentum is about 1.5 GeV
+sbs.gem.useopticsconstraint = 1
+sbs.gem.xptar_min = -0.25
+sbs.gem.xptar_max = 0.25
+sbs.gem.yptar_min = -0.08
+sbs.gem.yptar_max = 0.08
+sbs.gem.ytar_min = -0.08
+sbs.gem.ytar_max = 0.08
+sbs.gem.pmin = 0.5
+sbs.gem.pmax = 1.5
+
+----------[ 2021-10-21 00:00:00 ] # start of SBS-4 kinematics:
+
+sbs.gem.useopticsconstraint = 1
+sbs.gem.xptar_min = -0.3
+sbs.gem.xptar_max = 0.3
+sbs.gem.yptar_min = -0.09
+sbs.gem.yptar_max = 0.1
+sbs.gem.ytar_min = -0.08
+sbs.gem.ytar_max = 0.08
+sbs.gem.pmin = 0.7
+sbs.gem.pmax = 2.7
+
+
+############################################################################### 
+
+###################### BEGIN TIME-DEPENDENT CLUSTERING PARAMETERS #############
+
+# turn off track search region constraint for zero-field runs in SBS with sieve:
+---------[ 2021-10-14 21:50:00 ]
+
+sbs.gem.useconstraint = 0
+sbs.gem.useopticsconstraint = 0
+
+---------[ 2021-10-14 23:14:00 ]  
+
+sbs.gem.useconstraint = 0
+sbs.gem.useopticsconstraint = 0
+
+###################### TIME-DEPENDENT PEDESTAL FILES ##########################
+
+# time-dependent entries:
+# default value from the beginning of time:
+--------[ 2021-01-01 00:00:00 ]
+sbs.gem.pedfile = gemped/daq_ped_sbs_gem_run220.dat
+
+# new pedestals from run 814:
+
+--------[ 2021-09-19 00:00:00 ]
+sbs.gem.pedfile = gemped/daq_ped_sbs_gem_run814.dat
+
+--------[ 2021-09-21 14:30:00 ]
+sbs.gem.pedfile = gemped/daq_ped_sbs_gem_run902.dat
+
+-------[ 2021-09-22 09:22:00 ] # start of first run after fibers 2 and 3 swapped:
+#------[ 2021-09-25 06:45:00 ]
+sbs.gem.pedfile = gemped/daq_ped_sbs_gem_run10363.dat
+
+--------[ 2021-09-27 00:46:14 ] # start of first run after fibers 2 and 3 swapped back to original connections:
+sbs.gem.pedfile = gemped/daq_ped_sbs_gem_run10431.dat
+
+--------[ 2021-09-30 12:40:00 ] # new pedestals from run 1053
+sbs.gem.pedfile = gemped/daq_ped_sbs_gem_run1053.dat
+
+--------[ 2021-10-06 22:56:00 ] # new pedestals from run 1115
+sbs.gem.pedfile = gemped/daq_ped_sbs_gem_run1115.dat
+
+--------[ 2021-10-11 12:27:00 ] # run 10975
+sbs.gem.pedfile = gemped/daq_ped_sbs_gem_run10975.dat
+
+--------[ 2021-10-14 01:56:00 ] # run 11072
+sbs.gem.pedfile = gemped/daq_ped_sbs_gem_run11072.dat
+
+--------[ 2021-10-21 09:00:00 ] # run 11440
+sbs.gem.pedfile = gemped/daq_ped_sbs_gem_run11440.dat
+
+--------[ 2021-10-21 17:00:00 ] # run 11462
+sbs.gem.pedfile = gemped/daq_ped_sbs_gem_run11462.dat
+
+--------[ 2021-11-12 17:00:00 ] # run 11462
+sbs.gem.pedfile = gemped/daq_ped_sbs_gem_run11936.dat
+
+#################### END OF TIME-DEPENDENT PEDESTAL FILES #########################
+
+
+######################## TIME-DEPENDENT COMMON-MODE PARAMETERS ###############################
+## THESE ARE ASSOCIATED WITH THE SAME TIME STAMPS ABOVE, BUT WE ORGANIZE THEM INTO THEIR    ## 
+## OWN SECTION FOR READABILITY AND CLARITY                                                  ##
+##############################################################################################
+
+# default from the beginning of time to september 19, 2021:
+#Mon Sep 20 15:42:48 2021
+# Copy the contents of this file into $DB_DIR/db_sbs.gem.dat to use these pedestals for analysis
+# format = detname.commonmode_mean(U,V) and detname.commonmode_rms(U,V) = common-mode mean and RMS for U, V strips by APV card in order of position
+
+#Tue Aug 24 11:00:51 2021
+# Copy the contents of this file into $DB_DIR/db_sbs.gem.dat to use these pedestals for analysis
+# format = detname.commonmode_mean(U,V) and detname.commonmode_rms(U,V) = common-mode mean and RMS for U, V strips by APV card in order of position
+----------[ 2021-01-01 00:00:00 ]
+sbs.gem.m0.commonmode_meanU = 
+           490.99            406.03            547.52            360.42            273.57            504.36            335.14            544.19            304.93            470.43             343.2            367.04            506.57            405.28            473.48             518.4 
+           546.14            494.38            517.94             346.5            449.82            551.09            542.17            477.48            485.24            508.49            465.76            392.41            595.47            414.46 
+sbs.gem.m0.commonmode_rmsU = 
+           10.524            9.2513            9.4773             9.527            11.437            12.403            14.011            14.427            9.8783            12.444            11.746            13.735              8.65            10.336            14.219            9.5153 
+           11.016            13.508            11.764            10.993             13.85            19.205            15.913            12.885            14.131            23.777            14.586            11.483            12.809            13.228 
+sbs.gem.m0.commonmode_meanV = 
+           421.03            328.65            601.23            466.03            521.86            529.36             426.8            427.27            366.37             509.8            475.98            319.99             434.4            473.04            497.24            426.58 
+           487.51            571.94             524.5            508.56            549.63             464.2            475.91            551.61             270.5            469.59            480.85             458.7            482.47            515.14 
+sbs.gem.m0.commonmode_rmsV = 
+           11.637            11.614            13.246             12.71            13.735            14.588            16.944            13.892                10            9.7629            13.974              12.9             7.955            9.2851            13.188            9.7717 
+           9.7133            14.057            10.351            10.847            13.302            17.551            9.3406            10.931            12.862            17.463            10.086            10.226            13.912            13.767 
+
+
+sbs.gem.m1.commonmode_meanU = 
+           418.83            412.16            450.74            505.18            533.17            489.39            458.39            473.13            504.04            494.44 
+sbs.gem.m1.commonmode_rmsU = 
+           55.386            40.214            57.103             35.03            60.746            30.311            54.716            33.133             55.41            37.793 
+sbs.gem.m1.commonmode_meanV = 
+           498.36            559.88            407.79            469.71            448.92            458.64            408.41             551.2 
+sbs.gem.m1.commonmode_rmsV = 
+            62.33            45.839            51.436            56.581            47.673            58.785            47.809            67.233 
+
+
+sbs.gem.m2.commonmode_meanU = 
+           496.86            475.04            471.67             454.7            471.71            443.76            510.57             415.2            427.77            396.97 
+sbs.gem.m2.commonmode_rmsU = 
+           41.474            37.679            45.192            32.358            48.169            30.356            52.703            32.787            57.986            41.121 
+sbs.gem.m2.commonmode_meanV = 
+           438.62            581.12            523.27            528.73             416.2            588.68            442.51            500.85 
+sbs.gem.m2.commonmode_rmsV = 
+           43.744            76.222            47.172            79.476            46.158            84.642            44.599            84.335 
+
+
+sbs.gem.m3.commonmode_meanU = 
+           479.53            487.06            546.11            316.06            533.51            435.86            483.71             540.1            542.96            430.58 
+sbs.gem.m3.commonmode_rmsU = 
+           52.025            45.958            52.697            36.427            49.671            36.145            57.636            42.987            66.316            49.403 
+sbs.gem.m3.commonmode_meanV = 
+            477.9            433.17            451.01            600.52            440.46            532.86            526.41            395.35 
+sbs.gem.m3.commonmode_rmsV = 
+           38.457            87.291            54.543            82.175            56.589            82.732            54.213             53.44 
+
+
+sbs.gem.m4.commonmode_meanU = 
+           445.82            471.93            465.32            509.44            482.32            295.53            491.22            495.59            479.34            492.65            458.92            469.49            380.96            473.66             458.1            375.79 
+           497.81            504.11            493.02            579.25            499.73            480.72            494.11            498.54            517.03            466.77            512.94            519.08             567.8            556.55 
+sbs.gem.m4.commonmode_rmsU = 
+            8.154            9.2791            11.858            14.493            12.464              9.94            10.031            15.983            12.808            11.122            9.5349            11.036            13.199            11.125            20.241            10.952 
+           8.9187            15.569            14.833            8.7499            10.096            20.579            19.879            10.515            8.8489            27.496            8.9857            8.0921            9.4016            8.7169 
+sbs.gem.m4.commonmode_meanV = 
+           256.66            358.51            238.07            438.45            329.79            532.18            528.95             431.5            672.42             504.8            466.89            520.12            519.92            455.78            429.24            525.65 
+           369.85            458.92            375.07            562.91            502.71            312.27            423.62            441.14            573.79             617.7            531.07            590.08            481.18            486.32 
+sbs.gem.m4.commonmode_rmsV = 
+           7.7742            7.5612            9.0081            9.9907            11.736             11.24            14.774            20.146            13.043            8.4474            12.426            15.224             9.314            9.4978            17.782            11.984 
+           10.408            16.711            14.608            8.9515            12.147            20.116            21.508            8.4621             12.15            37.364            16.047            9.3415             10.58            10.185 
+
+
+sbs.gem.m5.commonmode_meanU = 
+           480.57            529.42            510.92            419.19            463.15             479.2            469.74            430.42            443.75            502.11 
+sbs.gem.m5.commonmode_rmsU = 
+           34.628            38.812            34.106            39.534            32.983            34.096             33.39             30.81            38.827            34.561 
+sbs.gem.m5.commonmode_meanV = 
+           342.62            556.03            483.93            471.79            458.58            485.09             392.7            463.68 
+sbs.gem.m5.commonmode_rmsV = 
+           61.994            48.767            53.065            44.044            53.971            47.546            52.124            47.931 
+
+
+sbs.gem.m6.commonmode_meanU = 
+           404.96            382.42            532.71            354.05            421.21            408.61            398.78            534.13            450.01            505.03 
+sbs.gem.m6.commonmode_rmsU = 
+           48.877            44.142            38.471            34.419            31.537             24.41            33.552             39.55            52.016            45.281 
+sbs.gem.m6.commonmode_meanV = 
+           464.05            554.85             507.1            515.76            506.64            464.77            482.48            407.23 
+sbs.gem.m6.commonmode_rmsV = 
+               65            68.527            61.381            59.597            61.237            64.431            71.307            57.339 
+
+
+sbs.gem.m7.commonmode_meanU = 
+            446.5            443.66            473.64            436.86            462.15            529.09            423.35            466.67            358.91            359.53 
+sbs.gem.m7.commonmode_rmsU = 
+           63.951            43.602            39.478            36.749            34.979            43.252            43.349            56.482            58.375            74.335 
+sbs.gem.m7.commonmode_meanV = 
+           515.69            374.42            536.28            412.93            459.97            432.24            419.62             433.4 
+sbs.gem.m7.commonmode_rmsV = 
+           60.382            4.4699            75.569            72.028            66.573            69.633            58.202            69.422 
+
+
+sbs.gem.m8.commonmode_meanU = 
+           527.84             613.9            575.68            448.83            606.15            456.89            510.36            530.12               494            538.11 
+sbs.gem.m8.commonmode_rmsU = 
+           8.6434            7.9871            7.9487            8.2567            8.6578            8.9919            7.4099            9.9575            10.027            12.878 
+sbs.gem.m8.commonmode_meanV = 
+           606.74            697.27             516.7            614.86            693.27            516.96            763.79            762.15            603.11            579.45             616.7            757.04 
+sbs.gem.m8.commonmode_rmsV = 
+            9.092            6.4767            9.4352            7.7495            6.8697            7.0946            8.3046            7.4056            7.1353            9.2061            6.5941            8.7102 
+
+
+sbs.gem.m9.commonmode_meanU = 
+           549.74            406.46            532.36             400.4            660.19            395.55            513.77            362.21            502.49            502.16 
+sbs.gem.m9.commonmode_rmsU = 
+           13.155            8.8362             10.58            12.635            11.736            8.3171            8.5939            7.4843            8.2079            10.904 
+sbs.gem.m9.commonmode_meanV = 
+           537.73            710.68            574.44            512.57            642.66            667.01             722.8            672.97            613.14            657.53            615.54            189.66 
+sbs.gem.m9.commonmode_rmsV = 
+            16.97              8.53            9.6817            7.6256            7.1732            7.7838            8.3784            7.6909            7.9491            7.2995            7.6477            1.4925 
+
+
+sbs.gem.m10.commonmode_meanU = 
+           495.42            303.78            293.39            519.22            522.26            536.72            594.75            557.33            556.12            480.66 
+sbs.gem.m10.commonmode_rmsU = 
+           11.561            10.373            9.0851            9.4012            10.368            9.1834            9.8128            9.9794            9.5952            10.155 
+sbs.gem.m10.commonmode_meanV = 
+           655.86            418.24            754.04            660.08            468.91            612.73            575.38            550.06            452.52            389.26            562.23            583.09 
+sbs.gem.m10.commonmode_rmsV = 
+           11.526            8.3887            8.8723            8.2499            7.7654            9.4968            9.2299            9.3869            8.1369            11.085            7.9543            12.898 
+
+
+sbs.gem.m11.commonmode_meanU = 
+           491.55            423.57            452.29            462.17            490.72            738.19            793.78            629.98            792.41            711.74 
+sbs.gem.m11.commonmode_rmsU = 
+           8.8906            7.6693            9.9811            9.0147            9.3932            9.8951            9.3552            10.955            12.768            9.7872 
+sbs.gem.m11.commonmode_meanV = 
+           602.57            673.62            553.17            605.13            537.91            618.25            501.74            391.66            397.54            373.32            443.34            464.75 
+sbs.gem.m11.commonmode_rmsV = 
+            10.27            7.4577             8.261            8.7531            8.6486            9.1007            8.6674            8.3121            8.4997            9.3674            7.7888            18.332 
+
+
+sbs.gem.m12.commonmode_meanU = 
+           490.99            406.03            547.52            360.42            273.57            504.36            335.14            544.19            304.93            470.43             343.2            367.04            506.57            405.28            473.48             518.4 
+           546.14            494.38            517.94             346.5            449.82            551.09            542.17            477.48            485.24            508.49            465.76            392.41            595.47            414.46 
+sbs.gem.m12.commonmode_rmsU = 
+           10.524            9.2513            9.4773             9.527            11.437            12.403            14.011            14.427            9.8783            12.444            11.746            13.735              8.65            10.336            14.219            9.5153 
+           11.016            13.508            11.764            10.993             13.85            19.205            15.913            12.885            14.131            23.777            14.586            11.483            12.809            13.228 
+sbs.gem.m12.commonmode_meanV = 
+           421.03            328.65            601.23            466.03            521.86            529.36             426.8            427.27            366.37             509.8            475.98            319.99             434.4            473.04            497.24            426.58 
+           487.51            571.94             524.5            508.56            549.63             464.2            475.91            551.61             270.5            469.59            480.85             458.7            482.47            515.14 
+sbs.gem.m12.commonmode_rmsV = 
+           11.637            11.614            13.246             12.71            13.735            14.588            16.944            13.892                10            9.7629            13.974              12.9             7.955            9.2851            13.188            9.7717 
+           9.7133            14.057            10.351            10.847            13.302            17.551            9.3406            10.931            12.862            17.463            10.086            10.226            13.912            13.767 
+
+
+sbs.gem.m13.commonmode_meanU = 
+           418.83            412.16            450.74            505.18            533.17            489.39            458.39            473.13            504.04            494.44 
+sbs.gem.m13.commonmode_rmsU = 
+           55.386            40.214            57.103             35.03            60.746            30.311            54.716            33.133             55.41            37.793 
+sbs.gem.m13.commonmode_meanV = 
+           498.36            559.88            407.79            469.71            448.92            458.64            408.41             551.2 
+sbs.gem.m13.commonmode_rmsV = 
+            62.33            45.839            51.436            56.581            47.673            58.785            47.809            67.233 
+
+
+sbs.gem.m14.commonmode_meanU = 
+           496.86            475.04            471.67             454.7            471.71            443.76            510.57             415.2            427.77            396.97 
+sbs.gem.m14.commonmode_rmsU = 
+           41.474            37.679            45.192            32.358            48.169            30.356            52.703            32.787            57.986            41.121 
+sbs.gem.m14.commonmode_meanV = 
+           438.62            581.12            523.27            528.73             416.2            588.68            442.51            500.85 
+sbs.gem.m14.commonmode_rmsV = 
+           43.744            76.222            47.172            79.476            46.158            84.642            44.599            84.335 
+
+
+sbs.gem.m15.commonmode_meanU = 
+           479.53            487.06            546.11            316.06            533.51            435.86            483.71             540.1            542.96            430.58 
+sbs.gem.m15.commonmode_rmsU = 
+           52.025            45.958            52.697            36.427            49.671            36.145            57.636            42.987            66.316            49.403 
+sbs.gem.m15.commonmode_meanV = 
+            477.9            433.17            451.01            600.52            440.46            532.86            526.41            395.35 
+sbs.gem.m15.commonmode_rmsV = 
+           38.457            87.291            54.543            82.175            56.589            82.732            54.213             53.44 
+
+
+sbs.gem.m16.commonmode_meanU = 
+           445.82            471.93            465.32            509.44            482.32            295.53            491.22            495.59            479.34            492.65            458.92            469.49            380.96            473.66             458.1            375.79 
+           497.81            504.11            493.02            579.25            499.73            480.72            494.11            498.54            517.03            466.77            512.94            519.08             567.8            556.55 
+sbs.gem.m16.commonmode_rmsU = 
+            8.154            9.2791            11.858            14.493            12.464              9.94            10.031            15.983            12.808            11.122            9.5349            11.036            13.199            11.125            20.241            10.952 
+           8.9187            15.569            14.833            8.7499            10.096            20.579            19.879            10.515            8.8489            27.496            8.9857            8.0921            9.4016            8.7169 
+sbs.gem.m16.commonmode_meanV = 
+           256.66            358.51            238.07            438.45            329.79            532.18            528.95             431.5            672.42             504.8            466.89            520.12            519.92            455.78            429.24            525.65 
+           369.85            458.92            375.07            562.91            502.71            312.27            423.62            441.14            573.79             617.7            531.07            590.08            481.18            486.32 
+sbs.gem.m16.commonmode_rmsV = 
+           7.7742            7.5612            9.0081            9.9907            11.736             11.24            14.774            20.146            13.043            8.4474            12.426            15.224             9.314            9.4978            17.782            11.984 
+           10.408            16.711            14.608            8.9515            12.147            20.116            21.508            8.4621             12.15            37.364            16.047            9.3415             10.58            10.185 
+
+
+sbs.gem.m17.commonmode_meanU = 
+           480.57            529.42            510.92            419.19            463.15             479.2            469.74            430.42            443.75            502.11 
+sbs.gem.m17.commonmode_rmsU = 
+           34.628            38.812            34.106            39.534            32.983            34.096             33.39             30.81            38.827            34.561 
+sbs.gem.m17.commonmode_meanV = 
+           342.62            556.03            483.93            471.79            458.58            485.09             392.7            463.68 
+sbs.gem.m17.commonmode_rmsV = 
+           61.994            48.767            53.065            44.044            53.971            47.546            52.124            47.931 
+
+
+sbs.gem.m18.commonmode_meanU = 
+           404.96            382.42            532.71            354.05            421.21            408.61            398.78            534.13            450.01            505.03 
+sbs.gem.m18.commonmode_rmsU = 
+           48.877            44.142            38.471            34.419            31.537             24.41            33.552             39.55            52.016            45.281 
+sbs.gem.m18.commonmode_meanV = 
+           464.05            554.85             507.1            515.76            506.64            464.77            482.48            407.23 
+sbs.gem.m18.commonmode_rmsV = 
+               65            68.527            61.381            59.597            61.237            64.431            71.307            57.339 
+
+
+sbs.gem.m19.commonmode_meanU = 
+            446.5            443.66            473.64            436.86            462.15            529.09            423.35            466.67            358.91            359.53 
+sbs.gem.m19.commonmode_rmsU = 
+           63.951            43.602            39.478            36.749            34.979            43.252            43.349            56.482            58.375            74.335 
+sbs.gem.m19.commonmode_meanV = 
+           515.69            374.42            536.28            412.93            459.97            432.24            419.62             433.4 
+sbs.gem.m19.commonmode_rmsV = 
+           60.382            4.4699            75.569            72.028            66.573            69.633            58.202            69.422 
+
+
+sbs.gem.m20.commonmode_meanU = 
+           527.84             613.9            575.68            448.83            606.15            456.89            510.36            530.12               494            538.11 
+sbs.gem.m20.commonmode_rmsU = 
+           8.6434            7.9871            7.9487            8.2567            8.6578            8.9919            7.4099            9.9575            10.027            12.878 
+sbs.gem.m20.commonmode_meanV = 
+           606.74            697.27             516.7            614.86            693.27            516.96            763.79            762.15            603.11            579.45             616.7            757.04 
+sbs.gem.m20.commonmode_rmsV = 
+            9.092            6.4767            9.4352            7.7495            6.8697            7.0946            8.3046            7.4056            7.1353            9.2061            6.5941            8.7102 
+
+
+sbs.gem.m21.commonmode_meanU = 
+           549.74            406.46            532.36             400.4            660.19            395.55            513.77            362.21            502.49            502.16 
+sbs.gem.m21.commonmode_rmsU = 
+           13.155            8.8362             10.58            12.635            11.736            8.3171            8.5939            7.4843            8.2079            10.904 
+sbs.gem.m21.commonmode_meanV = 
+           537.73            710.68            574.44            512.57            642.66            667.01             722.8            672.97            613.14            657.53            615.54            189.66 
+sbs.gem.m21.commonmode_rmsV = 
+            16.97              8.53            9.6817            7.6256            7.1732            7.7838            8.3784            7.6909            7.9491            7.2995            7.6477            1.4925 
+
+
+sbs.gem.m22.commonmode_meanU = 
+           495.42            303.78            293.39            519.22            522.26            536.72            594.75            557.33            556.12            480.66 
+sbs.gem.m22.commonmode_rmsU = 
+           11.561            10.373            9.0851            9.4012            10.368            9.1834            9.8128            9.9794            9.5952            10.155 
+sbs.gem.m22.commonmode_meanV = 
+           655.86            418.24            754.04            660.08            468.91            612.73            575.38            550.06            452.52            389.26            562.23            583.09 
+sbs.gem.m22.commonmode_rmsV = 
+           11.526            8.3887            8.8723            8.2499            7.7654            9.4968            9.2299            9.3869            8.1369            11.085            7.9543            12.898 
+
+
+sbs.gem.m23.commonmode_meanU = 
+           491.55            423.57            452.29            462.17            490.72            738.19            793.78            629.98            792.41            711.74 
+sbs.gem.m23.commonmode_rmsU = 
+           8.8906            7.6693            9.9811            9.0147            9.3932            9.8951            9.3552            10.955            12.768            9.7872 
+sbs.gem.m23.commonmode_meanV = 
+           602.57            673.62            553.17            605.13            537.91            618.25            501.74            391.66            397.54            373.32            443.34            464.75 
+sbs.gem.m23.commonmode_rmsV = 
+            10.27            7.4577             8.261            8.7531            8.6486            9.1007            8.6674            8.3121            8.4997            9.3674            7.7888            18.332 
+
+sbs.gem.m24.commonmode_meanU = 
+           490.99            406.03            547.52            360.42            273.57            504.36            335.14            544.19            304.93            470.43             343.2            367.04            506.57            405.28            473.48             518.4 
+           546.14            494.38            517.94             346.5            449.82            551.09            542.17            477.48            485.24            508.49            465.76            392.41            595.47            414.46 
+sbs.gem.m24.commonmode_rmsU = 
+           10.524            9.2513            9.4773             9.527            11.437            12.403            14.011            14.427            9.8783            12.444            11.746            13.735              8.65            10.336            14.219            9.5153 
+           11.016            13.508            11.764            10.993             13.85            19.205            15.913            12.885            14.131            23.777            14.586            11.483            12.809            13.228 
+sbs.gem.m24.commonmode_meanV = 
+           421.03            328.65            601.23            466.03            521.86            529.36             426.8            427.27            366.37             509.8            475.98            319.99             434.4            473.04            497.24            426.58 
+           487.51            571.94             524.5            508.56            549.63             464.2            475.91            551.61             270.5            469.59            480.85             458.7            482.47            515.14 
+sbs.gem.m24.commonmode_rmsV = 
+           11.637            11.614            13.246             12.71            13.735            14.588            16.944            13.892                10            9.7629            13.974              12.9             7.955            9.2851            13.188            9.7717 
+           9.7133            14.057            10.351            10.847            13.302            17.551            9.3406            10.931            12.862            17.463            10.086            10.226            13.912            13.767 
+
+
+sbs.gem.m25.commonmode_meanU = 
+           418.83            412.16            450.74            505.18            533.17            489.39            458.39            473.13            504.04            494.44 
+sbs.gem.m25.commonmode_rmsU = 
+           55.386            40.214            57.103             35.03            60.746            30.311            54.716            33.133             55.41            37.793 
+sbs.gem.m25.commonmode_meanV = 
+           498.36            559.88            407.79            469.71            448.92            458.64            408.41             551.2 
+sbs.gem.m25.commonmode_rmsV = 
+            62.33            45.839            51.436            56.581            47.673            58.785            47.809            67.233 
+
+
+sbs.gem.m26.commonmode_meanU = 
+           496.86            475.04            471.67             454.7            471.71            443.76            510.57             415.2            427.77            396.97 
+sbs.gem.m26.commonmode_rmsU = 
+           41.474            37.679            45.192            32.358            48.169            30.356            52.703            32.787            57.986            41.121 
+sbs.gem.m26.commonmode_meanV = 
+           438.62            581.12            523.27            528.73             416.2            588.68            442.51            500.85 
+sbs.gem.m26.commonmode_rmsV = 
+           43.744            76.222            47.172            79.476            46.158            84.642            44.599            84.335 
+
+
+sbs.gem.m27.commonmode_meanU = 
+           479.53            487.06            546.11            316.06            533.51            435.86            483.71             540.1            542.96            430.58 
+sbs.gem.m27.commonmode_rmsU = 
+           52.025            45.958            52.697            36.427            49.671            36.145            57.636            42.987            66.316            49.403 
+sbs.gem.m27.commonmode_meanV = 
+            477.9            433.17            451.01            600.52            440.46            532.86            526.41            395.35 
+sbs.gem.m27.commonmode_rmsV = 
+           38.457            87.291            54.543            82.175            56.589            82.732            54.213             53.44 
+
+
+sbs.gem.m28.commonmode_meanU = 
+           445.82            471.93            465.32            509.44            482.32            295.53            491.22            495.59            479.34            492.65            458.92            469.49            380.96            473.66             458.1            375.79 
+           497.81            504.11            493.02            579.25            499.73            480.72            494.11            498.54            517.03            466.77            512.94            519.08             567.8            556.55 
+sbs.gem.m28.commonmode_rmsU = 
+            8.154            9.2791            11.858            14.493            12.464              9.94            10.031            15.983            12.808            11.122            9.5349            11.036            13.199            11.125            20.241            10.952 
+           8.9187            15.569            14.833            8.7499            10.096            20.579            19.879            10.515            8.8489            27.496            8.9857            8.0921            9.4016            8.7169 
+sbs.gem.m28.commonmode_meanV = 
+           256.66            358.51            238.07            438.45            329.79            532.18            528.95             431.5            672.42             504.8            466.89            520.12            519.92            455.78            429.24            525.65 
+           369.85            458.92            375.07            562.91            502.71            312.27            423.62            441.14            573.79             617.7            531.07            590.08            481.18            486.32 
+sbs.gem.m28.commonmode_rmsV = 
+           7.7742            7.5612            9.0081            9.9907            11.736             11.24            14.774            20.146            13.043            8.4474            12.426            15.224             9.314            9.4978            17.782            11.984 
+           10.408            16.711            14.608            8.9515            12.147            20.116            21.508            8.4621             12.15            37.364            16.047            9.3415             10.58            10.185 
+
+
+sbs.gem.m29.commonmode_meanU = 
+           480.57            529.42            510.92            419.19            463.15             479.2            469.74            430.42            443.75            502.11 
+sbs.gem.m29.commonmode_rmsU = 
+           34.628            38.812            34.106            39.534            32.983            34.096             33.39             30.81            38.827            34.561 
+sbs.gem.m29.commonmode_meanV = 
+           342.62            556.03            483.93            471.79            458.58            485.09             392.7            463.68 
+sbs.gem.m29.commonmode_rmsV = 
+           61.994            48.767            53.065            44.044            53.971            47.546            52.124            47.931 
+
+
+sbs.gem.m30.commonmode_meanU = 
+           404.96            382.42            532.71            354.05            421.21            408.61            398.78            534.13            450.01            505.03 
+sbs.gem.m30.commonmode_rmsU = 
+           48.877            44.142            38.471            34.419            31.537             24.41            33.552             39.55            52.016            45.281 
+sbs.gem.m30.commonmode_meanV = 
+           464.05            554.85             507.1            515.76            506.64            464.77            482.48            407.23 
+sbs.gem.m30.commonmode_rmsV = 
+               65            68.527            61.381            59.597            61.237            64.431            71.307            57.339 
+
+
+sbs.gem.m31.commonmode_meanU = 
+            446.5            443.66            473.64            436.86            462.15            529.09            423.35            466.67            358.91            359.53 
+sbs.gem.m31.commonmode_rmsU = 
+           63.951            43.602            39.478            36.749            34.979            43.252            43.349            56.482            58.375            74.335 
+sbs.gem.m31.commonmode_meanV = 
+           515.69            374.42            536.28            412.93            459.97            432.24            419.62             433.4 
+sbs.gem.m31.commonmode_rmsV = 
+           60.382            4.4699            75.569            72.028            66.573            69.633            58.202            69.422 
+
+
+
+#################### END OF TIME-DEPENDENT COMMON-MODE PARAMETERS ############################
