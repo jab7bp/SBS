@@ -1,0 +1,116 @@
+# .bashrc
+ 
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
+
+# User specific aliases and functions
+
+# User specific aliases and functions
+alias   ls='ls -F -h --color'
+alias   du='du -h'
+alias   df='df -h'
+alias   cp='cp -iv'
+alias   mv='mv -iv'
+alias   rm='rm -v -i'
+
+alias subl="sublime-text"
+alias root="root -l"
+alias cmake="cmake3"
+
+alias gosbs="cd /home/sbs-onl/sbs/run_replay_here"
+alias panguin="/home/sbs-onl/sbs/panguin/panguin"
+alias newtab="xfce4-terminal --tab"
+
+alias startCoda="newtab --execute ping 192.168.1.2 && newtab --execute ping 192.168.2.2 && startCoda"
+
+##alias kcoda="kcoda && echo $cmake" 
+
+if [ "$TERM" == "dumb" ]; then
+    TERM=xterm
+    eval "`dircolors --sh ~/.dir_colors`"
+    PS1="\[\e[0m\][\u@\h \[\e[33m\]\w\[\e[0m\]]$ "
+    TERM=dumb
+fi
+
+#alias vs_eel='vncserver :8 -geometry 1280x710 -depth 24'
+
+
+## (BDS) NOTE: This script assumes $CODA is set...  I don't think that is
+##             true at this point?
+source ~/ROOT_GUI_multiCrate/setup.sh
+
+# Setup CODA environment
+## (BDS) This will need to be transitioned to the production Hall A setup
+# CODA 3 using coda_scripts
+JAVA_HOME=${HOME}/SBS-GENRP/coda/jdk1.8.0_152
+SESSION=EEL125
+EXPID=SBSGEM
+export SESSION EXPID
+export CODA_SCRIPTS="${HOME}/SBS-GENRP/coda_scripts"
+[ -r "${CODA_SCRIPTS}/setupCODA3.bash" ] && source "${CODA_SCRIPTS}/setupCODA3.bash"
+
+export LD_LIBRARY_PATH=$ROOTSYS/lib:$PYTHONDIR/lib:$LD_LIBRARY_PATH
+export PYTHONPATH=$ROOTSYS/lib:$PYTHONPATH
+
+
+### For Analyzer and SBS-Offline/Replay ####
+export PATH=${HOME}/analyzer/bin:$PATH
+export LD_LIBRARY_PATH=${HOME}/analyzer/lib64:$LD_LIBRARY_PATH
+export SBS=${HOME}/sbs/SBS-replay
+export SBS_REPLAY=$HOME/sbs/SBS-replay
+export DB_DIR=$HOME/sbs/SBS-replay/DB
+export OUT_DIR=$HOME/sbs/Rootfiles
+export LOG_DIR=$HOME/sbs/logs
+export RUN_REP=$HOME/sbs/run_replay_here
+export GUI_CFG=$HOME/sbs/SBS-replay/onlineGUIconfig
+export gemped=/home/sbs-onl/sbs/SBS-replay/DB/gemped
+
+export C_INCLUDE_PATH=${HOME}/analyzer/include:${HOME}/sbs/SBS-replay/replay:${HOME}/sbs/SBS-offline/include:$C_INCLUDE_PATH
+export CPLUS_INCLUDE_PATH=${C_INCLUDE_PATH}
+export INCLUDE_DIR=${C_INCLUDE_PATH}
+
+export jbsbs=/home/sbs-onl/JBoyd/SBS
+
+#GEM VIEW PROGRAMS###
+export GV=~/MPD_GEM_View_VTP/
+alias gem_view='source /opt/ROOT/6.18-04/bin/thisroot.sh && cd /home/sbs-onl/MPD_GEM_View_VTP/ && source setup_env.sh && source /opt/ROOT/6.18-04/bin/thisroot.sh && ./viewer'
+alias baseline='source /opt/ROOT/6.18-04/bin/thisroot.sh && cd /home/sbs-onl/mpd_baseline_evaluation/ && source setup_env.sh && source /opt/ROOT/6.18-04/bin/thisroot.sh && ./raw_data_viewer'
+
+gem_plots(){	
+	echo Plotting 2D Cluster Maps for run number: $1  
+       	cd /home/sbs-onl/MPD_GEM_View_VTP/scripts/gem_plots/ 
+	
+	root -l 'gem_plots.C("-run '${1}'")'
+	
+
+}
+
+gem_plots1(){
+	if [ $# -eq 1 ]; then
+		echo Plotting 2D Cluster Maps for run number: $1
+		cd /home/sbs-onl/MPD_GEM_View_VTP/scripts/gem_plots/
+        	
+		root -l 'gem_plots.C("-run '${1}'")'
+		break
+	fi
+	echo If 1 not happening
+	echo number of input: $#
+	if [[ $2 == "plot_all" ]]; then
+
+		echo 'plot_all' initiated. Creating all plot for run number: $1
+		cd /home/sbs-onl/MPD_GEM_View_VTP/scripts/gem_plots/
+
+		root -l 'gem_plots.C("-run '${1}' -plot_all")'
+		break
+
+	else
+		echo Error!!! Check input arguments/commands please!
+		break
+	fi
+}
