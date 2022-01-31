@@ -1,3 +1,6 @@
+##J. Boyd January 15, 2022
+##File to produce the cfg file for Panguin
+
 #include "TString.h"
 #include "TObjString.h"
 #include "TObjArray.h"
